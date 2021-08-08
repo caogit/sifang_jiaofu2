@@ -13,15 +13,15 @@
     </div>
     <ul class="state">
       <li>
-        <img src="../assets/icon_cut/ choice_jindu_no_shenpi@2x.png" alt="" />
+        <img src="../assets/icon_cut/choice_jindu_no_shenpi@2x.png" alt="" />
       </li>
       <li>
         <span class="state_dashed"></span>
-        <img src="../assets/icon_cut/ choice_jindu_no_shenpi@2x.png" alt="" />
+        <img src="../assets/icon_cut/choice_jindu_no_shenpi@2x.png" alt="" />
         <span class="state_dashed"></span>
       </li>
       <li>
-        <img src="../assets/icon_cut/ choice_jindu_pick_shenpi@2x.png" alt="" />
+        <img src="../assets/icon_cut/choice_jindu_pick_shenpi@2x.png" alt="" />
       </li>
     </ul>
     <ol class="state_footer">

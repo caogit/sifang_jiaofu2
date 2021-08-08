@@ -23,23 +23,25 @@ export default {
       listData: [
         {
           text: '首页',
-          imgUrl: require('../assets/icon_cut/ icon_home@2x.png'),
-          imgUrls: require('../assets/icon_cut/ icon_home_p@2x.png'),
+          // imgUrl: require('../assets/icon_cut/ icon_home@2x.png'),
+          imgUrl: require('../assets/icon_cut/icon_home@2x.png'),
+
+          imgUrls: require('../assets/icon_cut/icon_home_p@2x.png'),
         },
         {
           text: '任务',
-          imgUrl: require('../assets/icon_cut/ icon_mine_1@2x.png'),
-          imgUrls: require('../assets/icon_cut/ icon_mine_p_1@2x.png'),
+          imgUrl: require('../assets/icon_cut/icon_mine_1@2x.png'),
+          imgUrls: require('../assets/icon_cut/icon_mine_p_1@2x.png'),
         },
         {
           text: '审批',
-          imgUrl: require('../assets/icon_cut/ icon_footbar_shenhe@2x.png'),
-          imgUrls: require('../assets/icon_cut/ icon_footbar_shenhe_p@2x.png'),
+          imgUrl: require('../assets/icon_cut/icon_footbar_shenhe@2x.png'),
+          imgUrls: require('../assets/icon_cut/icon_footbar_shenhe_p@2x.png'),
         },
         {
           text: '我的',
-          imgUrl: require('../assets/icon_cut/ icon_mine@2x.png'),
-          imgUrls: require('../assets/icon_cut/ icon_mine_p@2x.png'),
+          imgUrl: require('../assets/icon_cut/icon_mine@2x.png'),
+          imgUrls: require('../assets/icon_cut/icon_mine_p@2x.png'),
         },
       ],
       tabdatas: 0,
