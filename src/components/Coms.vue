@@ -13,15 +13,32 @@
     </div>
     <ul class="state">
       <li>
-        <img src="../assets/icon_cut/choice_jindu_no_shenpi@2x.png" alt="" />
+        <img
+          src="../assets/icon_cut/choice_jindu_pick_shenpi@2x.png"
+          alt=""
+          v-if="liststate === 0"
+        />
+
+        <img src="../assets/icon_cut/choice_jindu_no_shenpi@2x.png" alt="" v-else />
       </li>
       <li>
         <span class="state_dashed"></span>
-        <img src="../assets/icon_cut/choice_jindu_no_shenpi@2x.png" alt="" />
+        <img
+          src="../assets/icon_cut/choice_jindu_pick_shenpi@2x.png"
+          alt=""
+          v-if="liststate === 1"
+        />
+        <img src="../assets/icon_cut/choice_jindu_no_shenpi@2x.png" alt="" v-else />
+
         <span class="state_dashed"></span>
       </li>
       <li>
-        <img src="../assets/icon_cut/choice_jindu_pick_shenpi@2x.png" alt="" />
+        <img
+          src="../assets/icon_cut/choice_jindu_pick_shenpi@2x.png"
+          alt=""
+          v-if="liststate === 2"
+        />
+        <img src="../assets/icon_cut/choice_jindu_no_shenpi@2x.png" alt="" v-else />
       </li>
     </ul>
     <ol class="state_footer">
@@ -35,6 +52,12 @@
 <script>
 export default {
   name: 'Coms',
+  props: {
+    liststate: {
+      type: Number,
+      default: 0,
+    },
+  },
 };
 </script>
 

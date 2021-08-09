@@ -1,7 +1,10 @@
 <template>
   <div class="mainStyle">
+    <NavBer>
+      <template #headerNav>审批</template>
+    </NavBer>
     <div class="coinmainStyle">
-      <Coms v-for="(item, index) in listData" :key="index">
+      <Coms v-for="(item, index) in listData" :key="index" :liststate="item.shenqingstate">
         <template #headerLeft>{{ item.titlename }}提交的申请</template>
         <template #headerright>立即申请</template>
         <template #bobys>
@@ -16,12 +19,15 @@
 <script>
 import Coms from '@/components/Coms.vue';
 import Tabber from '@/components/Tabber.vue';
+import NavBer from '@/components/Navber.vue';
+
 import { ApiUrl } from '@/api/index';
 export default {
   name: 'shenpi',
   components: {
     Coms,
     Tabber,
+    NavBer,
   },
   data() {
     return {
