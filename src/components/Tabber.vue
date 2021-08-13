@@ -23,9 +23,7 @@ export default {
       listData: [
         {
           text: '首页',
-          // imgUrl: require('../assets/icon_cut/ icon_home@2x.png'),
           imgUrl: require('../assets/icon_cut/icon_home@2x.png'),
-
           imgUrls: require('../assets/icon_cut/icon_home_p@2x.png'),
         },
         {
@@ -66,14 +64,11 @@ export default {
           str = '/mine';
           break;
       }
-      this.toSomepage(str, parms);
+      this.toSomepage(str);
     },
-    toSomepage(str, parms) {
+    toSomepage(str) {
       this.$router.push({
         path: str,
-        query: {
-          index: parms,
-        },
       });
     },
   },
@@ -88,11 +83,16 @@ export default {
   position: fixed;
   bottom: 0;
   left: 0;
+  font-size: 16px;
   .tabchange {
     height: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    img {
+      width: 21px;
+      height: 21px;
+    }
   }
   .tabchange li p:nth-child(1) {
     margin-bottom: 7px;

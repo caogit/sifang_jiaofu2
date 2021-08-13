@@ -1,9 +1,7 @@
 @charset "utf-8";
 html {
   background-color: #f9fafc;
-
     color: #000;
-
 }
 
 body,
@@ -46,7 +44,7 @@ code,
 kbd,
 samp {
     line-height: 1.5;
-    font-family: tahoma, arial, "Hiragino Sans GB", simsun, sans-serif
+    /* font-family: tahoma, arial, "Hiragino Sans GB", simsun, sans-serif */
 }
 
 h1,
@@ -194,14 +192,12 @@ sub {
 html {
     overflow-x: hidden;
     height: 100%;
-    font-size: 50px;
     -webkit-tap-highlight-color: transparent;
 }
 
 body {
     font-family: Arial, "Microsoft Yahei", "Helvetica Neue", Helvetica, sans-serif;
     color: #333;
-    font-size: .28em;
     line-height: 1;
     -webkit-text-size-adjust: none;
 }

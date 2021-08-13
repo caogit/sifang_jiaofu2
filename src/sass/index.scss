@@ -1,0 +1,60 @@
+@mixin change {
+  width: 68px;
+  height: 22px;
+  font-size: 12px;
+  line-height: 22px;
+  border-radius: 10px;
+}
+// 任务页面进行中颜色
+@mixin mission_5c9cf1{
+  color: #5c9cf1;
+  background-color: #d5e6fb;
+
+}
+// 任务页面通过颜色
+@mixin mission_219653{
+  color: #219653;
+  background-color: #d3eadd;
+}
+// 任务页面拒绝颜色
+
+@mixin mission_eb5757{
+  color: #eb5757;
+  background-color: #fbdddd;
+}
+
+// 任务页浅色文字
+@mixin mission_A1A1A{
+  color: #A1A1A1;
+}
+// 我的页面黑色大体字
+@mixin mine_2F2E41{
+  color: #2F2E41;
+}
+// 我的页面正常字
+@mixin mine_4C4C4C{
+  color: #4C4C4C;
+}
+// 浅色文字
+@mixin textColor{
+  font-size: 16px;
+ color: #C4C4C4;
+}
+// 泛蓝通用文字
+@mixin blueing{
+
+}
+// 通用文字
+@mixin generalColor{
+  font-size: 16px;
+  color: #515151;
+}
+
+//首页深色文字
+@mixin Home_footer_4C4C4C{
+  color: #4C4C4C;
+}
+//首页浅色文字
+@mixin Home_footer_E1E1E3{
+  color: #E1E1E3;
+}
