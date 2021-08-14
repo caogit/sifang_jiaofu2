@@ -17,6 +17,14 @@ const routes = [
     path: '/home',
     name: 'home',
     component: () => import(/* webpackChunkName: "about" */ '../views/home/index.vue'),
+    meta: {
+      keepAlive: true,
+    },
+  },
+  {
+    path: '/writeDaily',
+    name: 'writeDaily',
+    component: () => import(/* webpackChunkName: "about" */ '../views/daily/index.vue'),
   },
   {
     path: '/renwu',

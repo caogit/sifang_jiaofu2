@@ -5,6 +5,35 @@
   line-height: 22px;
   border-radius: 10px;
 }
+// 日报通用字体样式
+@mixin daily_public{
+  font-family: PingFang SC, PingFang SC-Medium;
+  background-color: #fff;
+  padding: 16px;
+  font-weight: 500;
+  img{
+    width: 18px;
+    height: 18px;
+  }
+}
+// 日报通用字体大小和颜色
+@mixin daily_4D4D4D {
+  color: #4D4D4D;
+}
+// 日报isShow通用浅色字体颜色
+@mixin dailt_828282{
+  color: #828282;
+  padding: 16px 21px 16px 24px;
+  font-size: 14px;
+  img{
+    width: 18px;
+    height: 18px;
+  }
+}
+@mixin daliy_custom($color){
+  color: $color;
+}
+
 // 任务页面进行中颜色
 @mixin mission_5c9cf1{
   color: #5c9cf1;
@@ -35,6 +64,8 @@
 @mixin mine_4C4C4C{
   color: #4C4C4C;
 }
+
+
 // 浅色文字
 @mixin textColor{
   font-size: 16px;

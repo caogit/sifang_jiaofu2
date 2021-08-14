@@ -3,7 +3,7 @@
  * 通过promise对axios做二次封装，针对用户端参数，做灵活配置
  */
 import { Message, Loading } from 'element-ui';
-import service from './interceptor';
+import instance from './interceptor';
 
 /**
  * 核心函数，可通过它处理一切请求数据，并做横向扩展
@@ -26,15 +26,12 @@ function request(url, params, options = { loading: true, mock: false, error: tru
     if (method == 'post') data = { data: params };
     // 通过mock平台可对局部接口进行mock设置
     if (options.mock) url = 'http://www.mock.com/mock/xxxx/api';
-    // 因为axios本身就可以直接使用url,method这些参数，所以直接实例出来的service就可以直接使用这些参数
-
-    service({
+    instance({
       url,
       method,
       ...data,
     })
       .then(res => {
-        console.log('🚀 ~ file: request.js ~ line 38 ~ returnnewPromise ~ res', res);
         // 此处作用很大，可以扩展很多功能。
         // 比如对接多个后台，数据结构不一致，可做接口适配器
         // 也可对返回日期/金额/数字等统一做集中处理
@@ -54,7 +51,6 @@ function request(url, params, options = { loading: true, mock: false, error: tru
       });
   });
 }
-
 // 封装GET请求
 function get(url, params, options) {
   return request(url, params, options, 'get');

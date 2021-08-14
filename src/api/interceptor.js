@@ -30,7 +30,7 @@ const service = axios.create({
     },
   },
   // 配置请求超时时间
-  timeout: 10000,
+  timeout: 8000,
   // 如果用的JSONP，可以配置此参数带上cookie凭证，如果是代理和CORS不用设置
   withCredentials: true,
 });

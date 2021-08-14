@@ -5,6 +5,12 @@ import Vuex from 'vuex';
 import store from './store/index';
 import 'amfe-flexible';
 import '@/style/reset.css';
+import { Picker, Popup, DatetimePicker } from 'vant';
+import filters from './filters/index';
+// 注入全局过滤器
+Object.keys(filters).forEach(item => {
+  Vue.filter(item, filters[item]);
+});
 // 导入插件
 import request from './api/request';
 // 在原型上扩展,这样不用在每个页面都导入request
@@ -21,6 +27,9 @@ Vue.component('BaseLayout', BaseLayout);
 Vue.config.productionTip = false;
 
 Vue.use(Vuex);
+Vue.use(Picker);
+Vue.use(Popup);
+Vue.use(DatetimePicker);
 
 new Vue({
   el: '#app',

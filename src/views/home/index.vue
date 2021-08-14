@@ -5,7 +5,7 @@
     </div>
     <div class="mainStyle">
       <div class="mainTopImg">
-        <img src="../../assets/icon_cut/img_date_p@3x.png" alt="" />
+        <img src="../../assets/icon_cut/img_date_p@3x.png" alt="" @click="toDaily" />
         <img src="../../assets/icon_cut/img_rest_p@3x.png" alt="" />
         <img src="../../assets/icon_cut/img_yanchishenqin_p@3x.png" alt="" />
       </div>
@@ -71,6 +71,13 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    toDaily() {
+      this.$router.push({
+        path: '/writeDaily',
+      });
+    },
   },
 };
 </script>

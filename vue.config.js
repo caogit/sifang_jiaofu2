@@ -19,10 +19,10 @@ module.exports = {
       },
     },
   },
-  devServer: {
-    host: '10.10.48.247', //将浏览地址的本地服务修改为本机ip地址，用来到手机上测试
-    port: 8080, //端口号
-  },
+  // devServer: {
+  //   host: '192.168.225.142', //将浏览地址的本地服务修改为本机ip地址，用来到手机上测试
+  //   port: 8080, //端口号
+  // },
   chainWebpack: config => {
     const oneOfsMap = config.module.rule('scss').oneOfs.store;
     oneOfsMap.forEach(item => {
