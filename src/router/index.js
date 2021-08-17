@@ -1,14 +1,28 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { getToken } from '@/utils/storage';
+import { Notify } from 'vant';
 
 Vue.use(VueRouter);
+
+//解决重复点击tabbar报错问题push
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  // console.log('push');
+  return originalPush.call(this, location).catch(err => err);
+};
+//解决重复点击tabbar报错问题replace
+const originalReplace = VueRouter.prototype.replace;
+VueRouter.prototype.replace = function replace(location) {
+  // console.log('replace');
+  return originalReplace.call(this, location).catch(err => err);
+};
 
 const routes = [
   {
     path: '/',
+    redirect: '/login',
     component: () => import(/* webpackChunkName: "about" */ '../views/login/index.vue'),
-    // redirect: '/login',
   },
   {
     path: '/login',
@@ -67,12 +81,19 @@ const router = new VueRouter({
 });
 // 路由跳转时使用导航守卫
 router.beforeEach((to, from, next) => {
-  // console.log('to, from, next', to, from, next);
+  console.log(to, from);
   if (to.path == '/login') return next();
   // console.log(getToken('Token'));
   if (!getToken('Token')) {
+    console.log(from);
     // 如果拿不到了Token的话就回到登录页
-    return next('/login');
+    if (from.path == '/login') {
+      Notify({ type: 'danger', message: '请先登录' });
+      return next('/login');
+    } else {
+      Notify({ type: 'danger', message: 'token失效，请重新登录' });
+      return next('/login');
+    }
   } else {
     next();
   }

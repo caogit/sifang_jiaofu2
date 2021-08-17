@@ -62,6 +62,7 @@ export default {
               expires: 50000,
               deposit: new Date().getTime(),
             });
+            this.$notify({ type: 'success', message: '登录成功' });
             this.$router.push('/home');
           }
         });

@@ -7,11 +7,7 @@
   </div>
 </template>
 <script>
-export default {
-  updated() {
-    console.log(this.$route);
-  },
-};
+export default {};
 </script>
 <style>
 * {
