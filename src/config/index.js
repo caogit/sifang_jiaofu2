@@ -1,7 +1,4 @@
-export const STATE_COLOR = {
-  OFF: '#D6D6D6',
-  FAIL: '#FA5F87',
-  SUCCESS: '#64D7B9',
-  WARN: '#FFBE5A',
-  PROGRESS: '#4453DB',
-};
+// 根据环境引入不同配置 process.env.NODE_ENV
+// 暂时没有用到
+const config = require('./env.' + process.env.VUE_APP_ENV);
+module.exports = config;

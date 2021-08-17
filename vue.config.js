@@ -19,10 +19,28 @@ module.exports = {
       },
     },
   },
-  // devServer: {
-  //   host: '192.168.225.142', //将浏览地址的本地服务修改为本机ip地址，用来到手机上测试
-  //   port: 8080, //端口号
-  // },
+  devServer: {
+    open: true, // npm run serve后自动打开页面
+    port: 9527, // 开发服务器运行端口号
+    proxy: {
+      '/apis': {
+        target: 'https://alex188.cn/jf2app',
+        changeOrigin: true, // 支持跨域 是否修改请求头中的host
+        ws: true,
+        logLevel: 'debug',
+        pathRewrite: {
+          '^/apis': '',
+        },
+      }, // 可以跨域多个
+      // '/test': {
+      //   target: 'https://api.xxxx.cn',
+      //   changeOrigin: true, // 支持跨域
+      //   pathRewrite: {
+      //     '^/test': ''
+      //   }
+      // }
+    },
+  },
   chainWebpack: config => {
     const oneOfsMap = config.module.rule('scss').oneOfs.store;
     oneOfsMap.forEach(item => {

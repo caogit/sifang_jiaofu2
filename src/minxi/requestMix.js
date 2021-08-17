@@ -18,7 +18,6 @@ export default function () {
           case 2:
             fn = '审批拒绝';
             break;
-
           default:
             break;
         }

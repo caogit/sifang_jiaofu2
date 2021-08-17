@@ -6,15 +6,10 @@ import store from './store/index';
 import 'amfe-flexible';
 import '@/style/reset.css';
 import { Picker, Popup, DatetimePicker } from 'vant';
-import filters from './filters/index';
-// 注入全局过滤器
-Object.keys(filters).forEach(item => {
-  Vue.filter(item, filters[item]);
-});
+import util from '@/utils/util';
 // 导入插件
 import request from './api/request';
-// 在原型上扩展,这样不用在每个页面都导入request
-Vue.prototype.request = request;
+
 // 全局引入Navbar
 import Navber from './components/Navber';
 // 全局引入BaseLayout
@@ -23,6 +18,10 @@ import BaseLayout from './components/BaseLayout/index';
 // 全局注册组件
 Vue.component('Navber', Navber);
 Vue.component('BaseLayout', BaseLayout);
+
+// 在原型上扩展
+Vue.prototype.request = request;
+Vue.prototype.util = util;
 
 Vue.config.productionTip = false;
 

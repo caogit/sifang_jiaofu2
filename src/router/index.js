@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import { getToken } from '@/utils/storage';
 
 Vue.use(VueRouter);
 
@@ -7,6 +8,7 @@ const routes = [
   {
     path: '/',
     component: () => import(/* webpackChunkName: "about" */ '../views/login/index.vue'),
+    // redirect: '/login',
   },
   {
     path: '/login',
@@ -17,14 +19,14 @@ const routes = [
     path: '/home',
     name: 'home',
     component: () => import(/* webpackChunkName: "about" */ '../views/home/index.vue'),
-    meta: {
-      keepAlive: true,
-    },
   },
   {
     path: '/writeDaily',
     name: 'writeDaily',
     component: () => import(/* webpackChunkName: "about" */ '../views/daily/index.vue'),
+    meta: {
+      keepAlive: true,
+    },
   },
   {
     path: '/renwu',
@@ -63,5 +65,16 @@ const routes = [
 const router = new VueRouter({
   routes,
 });
-
+// 路由跳转时使用导航守卫
+router.beforeEach((to, from, next) => {
+  // console.log('to, from, next', to, from, next);
+  if (to.path == '/login') return next();
+  // console.log(getToken('Token'));
+  if (!getToken('Token')) {
+    // 如果拿不到了Token的话就回到登录页
+    return next('/login');
+  } else {
+    next();
+  }
+});
 export default router;

@@ -1,31 +1,57 @@
 <template>
   <div id="aroundStyle">
-    <div
-      class="aroundForStyle"
-      v-for="(item, index) in listData"
-      :key="index"
-      @click="showOption(item.isBottomPopup, item.isTypeePopup, index)"
-    >
-      <!-- 通用的左右布局 -->
-      <div class="topShowStyle">
-        <div class="leftStyle">
-          {{ item.leftName }}
+    <div class="aroundForStyle" v-for="(item, index) in listData" :key="index">
+      <!-- 通用的左右布局（白块合并情况） -->
+      <div v-if="item.sibling">
+        <div
+          class="topShowStyle"
+          v-for="(items, indexs) in item.sibling"
+          :key="indexs"
+          @click="showOption(items.isProperty, items.isTypeePopup, index, indexs)"
+        >
+          <div class="leftStyle">
+            {{ items.leftName }}
+          </div>
+          <ul class="rightStyle">
+            <li class="rightItemStyle" :style="{ color: items.color }">
+              {{ items.rightName }}
+            </li>
+            <li v-show="items.imageUrl">
+              <img :src="items.imageUrl" alt="" />
+            </li>
+          </ul>
         </div>
-        <ul class="rightStyle">
-          <li class="rightItemStyle" :style="{ color: item.color }">
-            {{ item.rightName }}
-          </li>
-          <li v-show="item.imageUrl">
-            <img :src="item.imageUrl" alt="" />
-          </li>
-        </ul>
+      </div>
+      <!-- 通用的左右布局（白块不合并情况） -->
+      <div v-else>
+        <div class="topShowStyle" @click="showOption(item.isProperty, item.isTypeePopup, index)">
+          <div class="leftStyle">
+            {{ item.leftName }}
+          </div>
+          <ul class="rightStyle">
+            <li class="rightItemStyle" :style="{ color: item.color }">
+              {{ item.rightName }}
+            </li>
+            <li v-show="item.imageUrl">
+              <img :src="item.imageUrl" alt="" />
+            </li>
+          </ul>
+        </div>
       </div>
       <!-- 是否显示可收起展开的内容 -->
-      <div class="showDataStyle" v-if="item.taskListData">
-        <ul v-for="(items, index) in item.taskListData" :key="index" class="showItemDataStyle">
+      <div class="showDataStyle" v-if="item.taskListData" v-show="isShowPutOn">
+        <ul
+          v-for="(items, i) in item.taskListData"
+          :key="i"
+          class="showItemDataStyle"
+          @click="showDiffImage(index, i)"
+        >
           <li class="showDataStyle_left">{{ items.leftText }}</li>
           <li>
-            <img :src="items.rightImg" alt="" />
+            <img
+              :src="iputOnNum == JSON.stringify([index, i]) ? items.rightCheckImg : items.rightImg"
+              alt=""
+            />
           </li>
         </ul>
       </div>
@@ -34,36 +60,37 @@
         <textarea class="showInputInStyle" />
       </div>
     </div>
-    <!-- Vant选择器 -->
-    <van-popup
-      v-model="showPicker"
-      position="bottom"
-      class="pickerStyle"
-      :style="{ height: '40%' }"
-      get-container="#aroundStyle"
-    >
-      <van-datetime-picker
-        v-show="booleanFn.timeChoosePopup"
-        v-model="currentDate"
-        type="month-day"
-        title="选择月日"
-        @confirm="ondatetimeConfirm"
-        :min-date="listData[indexs].minDate"
-        :max-date="listData[indexs].maxDate"
-        :formatter="formatter"
-      />
 
-      <van-picker
-        v-show="booleanFn.pickers"
-        v-model="selectPicker"
-        show-toolbar
-        :columns="listData[indexs].columns"
-        @confirm="onConfirm"
-        @cancel="onCancel"
-        @change="onChange"
-      />
-    </van-popup>
-    <button @click="ckick">asdf</button>
+    <!-- Vant选择器 -->
+    <div>
+      <van-popup
+        v-model="showPicker"
+        position="bottom"
+        class="pickerStyle"
+        :style="{ height: '40%' }"
+      >
+        <van-datetime-picker
+          v-show="booleanFn.datetimePicker"
+          v-model="currentDate"
+          type="month-day"
+          title="选择月日"
+          @confirm="ondatetimeConfirm"
+          :min-date="listData[indexs].minDate"
+          :max-date="listData[indexs].maxDate"
+          :formatter="formatter"
+        />
+
+        <van-picker
+          v-show="booleanFn.pickers"
+          v-model="selectPicker"
+          show-toolbar
+          :columns="listData[indexs].columns"
+          @confirm="onConfirm"
+          @cancel="onCancel"
+          @change="onChange"
+        />
+      </van-popup>
+    </div>
   </div>
 </template>
 
@@ -79,31 +106,21 @@ export default {
       currentDate: new Date(),
       selectPicker: '',
       booleanFn: {
-        timeChoosePopup: false,
+        datetimePicker: false,
         pickers: false,
       },
       indexs: 0,
+      indexs2: 0,
       // 存储数据的数组
       arrData: [],
+      // 是否可收起展开
+      isShowPutOn: false,
+      // 切换
+      iputOnNum: [],
     };
   },
-  // created() {
-  //   this.isShowAdd();
-  // },
+
   methods: {
-    // 添加isShow
-    // isShowAdd() {
-    //   let arr = ['', '工时'];
-    //   arr.forEach(item => {
-    //     this.booleanFn[String(item)] = false;
-    //   });
-    //   console.log(this.booleanFn);
-    // },
-    ckick() {
-      this.listData.forEach(item => {
-        console.log(item.rightName);
-      });
-    },
     formatter(type, val) {
       if (type === 'month') {
         return `${val}月`;
@@ -114,7 +131,12 @@ export default {
     },
     // timePicker点击完成时
     ondatetimeConfirm(value) {
-      this.listData[this.indexs].rightName = value;
+      if (this.listData[this.indexs].sibling) {
+        this.listData[this.indexs].sibling[this.indexs2].rightName = this.util.selectData(value);
+      } else {
+        this.listData[this.indexs].rightName = this.util.selectData(value);
+      }
+
       this.showPicker = false;
     },
     // picker点击完成时
@@ -131,19 +153,28 @@ export default {
       this.showPicker = false;
     },
     // 点击选项
-    showOption(sts, typePopup, index) {
-      console.log('🚀 ~ file: aroundLayout.vue ~ line 101 ~ showOption ~ sts', sts, typePopup);
-      sts ? this.publicFunction(typePopup, index) : '';
+    showOption(sts, typePopup, index, indexs) {
+      if (sts === 'isBottomPopup') {
+        this.publicFunction(typePopup, index, indexs);
+      } else if (sts === 'isPutOn') {
+        this.isShowPutOn = !this.isShowPutOn;
+      }
+    },
+    // 点击可展开的每一项
+    showDiffImage(index, i) {
+      this.iputOnNum = JSON.stringify([index, i]);
     },
     // 将其他设为false  需要的popup设为true
-    publicFunction(typePopup, index) {
+    publicFunction(typePopup, index, indexs) {
       this.showPicker = true;
       Object.keys(this.booleanFn).forEach(item => {
         this.booleanFn[item] = false;
         this.booleanFn[typePopup] = true;
       });
-      // 拿到当前点击的那个index用于渲染数据(神之一手)
+      // 拿到当前listData点击的那个index用于渲染数据(神之一手)
       this.indexs = index;
+      // 拿到当前listData点击的那个sibling的index用于渲染数据(神之一手)
+      this.indexs2 = indexs;
     },
   },
 };
@@ -152,6 +183,7 @@ export default {
 <style lang="scss" scoped>
 #aroundStyle {
   .aroundForStyle {
+    margin-top: 16px;
     .topShowStyle {
       width: 100%;
       font-size: 15px;
@@ -159,16 +191,16 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 16px;
       .leftStyle {
         @include daily_4D4D4D;
       }
       .rightStyle {
         display: flex;
         align-items: center;
+        justify-content: flex-end;
         .rightItemStyle {
-          text-align: right;
-          width: 249px;
+          width: 80%;
+          text-align: left;
           margin-right: 8px;
         }
       }
@@ -205,6 +237,9 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 13px 13px 0 0;
+  }
+  .van-ellipsis {
+    color: red;
   }
 }
 </style>

@@ -6,6 +6,13 @@
     <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
+<script>
+export default {
+  updated() {
+    console.log(this.$route);
+  },
+};
+</script>
 <style>
 * {
   margin: 0;
@@ -15,6 +22,9 @@
 }
 body {
   height: 100%;
+}
+body .van-overflow-hidden {
+  overflow: none !important;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

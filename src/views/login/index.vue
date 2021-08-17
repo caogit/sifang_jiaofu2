@@ -11,13 +11,13 @@
       <div class="inputStyle">
         <label class="labelStyle"
           ><img src="../../assets/icon_cut/icon_iphone@2x.png" alt="" />
-          <input type="text" placeholder="请输入手机号" class="inputs_Style"
+          <input type="text" placeholder="请输入用户名" class="inputs_Style" v-model="userName"
         /></label>
       </div>
       <div class="inputStyle">
         <label class="labelStyle"
           ><img src="../../assets/icon_cut/icon_lock@3x.png" alt="" />
-          <input type="text" placeholder="请输入8~16位数字和字母" class="inputs_Style"
+          <input type="text" placeholder="请输入密码" class="inputs_Style" v-model="passWord"
         /></label>
       </div>
       <Btns :type="1" @click.native="toHome">
@@ -29,15 +29,45 @@
 
 <script>
 import Btns from '@/components/Btns.vue';
+import { ApiUrl } from '@/api/index';
+
+import { setToken } from '@/utils/storage';
+
 export default {
   components: {
     Btns,
   },
+  data() {
+    return {
+      userName: 'caoao',
+      passWord: 'hezm',
+    };
+  },
+
   methods: {
+    // 点击登录按钮时
     toHome() {
-      this.$router.push({
-        path: '/Home',
-      });
+      let parms = {
+        password: this.passWord,
+        username: this.userName,
+      };
+
+      if (this.userName != '' && this.passWord != '') {
+        this.request.post(ApiUrl.USER.LOGIN, parms).then(res => {
+          if (res.code == 200) {
+            let storage = res.data;
+            setToken({
+              keys: 'Token',
+              value: storage.tokenHead + storage.token,
+              expires: 50000,
+              deposit: new Date().getTime(),
+            });
+            this.$router.push('/home');
+          }
+        });
+      } else {
+        alert('请输入完整');
+      }
     },
   },
 };
@@ -98,7 +128,7 @@ export default {
         display: flex;
         align-items: center;
         font-size: 12px;
-        @include Home_footer_E1E1E3;
+        // @include Home_footer_E1E1E3;
         img {
           width: 20px;
           height: 20px;

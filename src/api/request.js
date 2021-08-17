@@ -25,7 +25,7 @@ function request(url, params, options = { loading: true, mock: false, error: tru
     // post请求使用data字段
     if (method == 'post') data = { data: params };
     // 通过mock平台可对局部接口进行mock设置
-    if (options.mock) url = 'http://www.mock.com/mock/xxxx/api';
+    // if (options.mock) url = 'http://www.mock.com/mock/xxxx/api';
     instance({
       url,
       method,

@@ -7,7 +7,7 @@
       <div class="mainTopImg">
         <img src="../../assets/icon_cut/img_mine_photo@3x.png" alt="" />
         <ul class="topTitleStyle">
-          <li class="topTitleText">你好，张嘉译</li>
+          <li class="topTitleText">你好，{{ requestData.realName }}</li>
           <li class="topHintText">
             <span>个人资料</span>
           </li>
@@ -33,6 +33,8 @@
 <script>
 import Tabber from '@/components/Tabber.vue';
 import ChangeOption from '@/components/publicMine/ChangeOption.vue';
+import { ApiUrl } from '@/api/index';
+
 export default {
   components: {
     Tabber,
@@ -69,7 +71,20 @@ export default {
           },
         ],
       },
+      requestData: '',
     };
+  },
+  created() {
+    this.pastRequest();
+  },
+  methods: {
+    pastRequest() {
+      this.request.post(ApiUrl.USER.GETLOGIN_USER_INFO).then(res => {
+        if (res.code == 200) {
+          this.requestData = res.data;
+        }
+      });
+    },
   },
 };
 </script>

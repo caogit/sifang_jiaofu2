@@ -67,7 +67,7 @@ export default {
       this.toSomepage(str);
     },
     toSomepage(str) {
-      this.$router.push({
+      this.$router.replace({
         path: str,
       });
     },
