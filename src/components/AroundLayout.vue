@@ -69,17 +69,6 @@
         class="pickerStyle"
         :style="{ height: '40%' }"
       >
-        <van-datetime-picker
-          v-show="booleanFn.datetimePicker"
-          v-model="currentDate"
-          type="month-day"
-          title="选择月日"
-          @confirm="ondatetimeConfirm"
-          :min-date="listData[indexs].minDate"
-          :max-date="listData[indexs].maxDate"
-          :formatter="formatter"
-        />
-
         <van-picker
           v-show="booleanFn.pickers"
           v-model="selectPicker"

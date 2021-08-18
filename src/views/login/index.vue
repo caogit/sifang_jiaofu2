@@ -39,8 +39,8 @@ export default {
   },
   data() {
     return {
-      userName: 'caoao',
-      passWord: 'hezm',
+      userName: 'suhongjie ',
+      passWord: '666666',
     };
   },
 

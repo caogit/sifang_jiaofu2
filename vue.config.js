@@ -25,7 +25,7 @@ module.exports = {
     proxy: {
       '/apis': {
         target: 'https://alex188.cn/h5app',
-        changeOrigin: false, // 支持跨域 是否修改请求头中的host
+        changeOrigin: true, // 支持跨域 是否修改请求头中的host
         ws: true,
         logLevel: 'debug',
         pathRewrite: {
