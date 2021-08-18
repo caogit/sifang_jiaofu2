@@ -43,6 +43,11 @@ const routes = [
     },
   },
   {
+    path: '/holidayApply',
+    name: 'holidayApply',
+    component: () => import(/* webpackChunkName: "about" */ '../views/holidayApply/index.vue'),
+  },
+  {
     path: '/renwu',
     name: 'renwu',
     component: () => import(/* webpackChunkName: "about" */ '../views/renwu/index.vue'),
@@ -73,6 +78,16 @@ const routes = [
     path: '/mine',
     name: 'mine',
     component: () => import(/* webpackChunkName: "about" */ '../views/mine/index.vue'),
+  },
+  {
+    path: '/personalData',
+    name: 'personalData',
+    component: () => import(/* webpackChunkName: "about" */ '../views/mine/personalData.vue'),
+  },
+  {
+    path: '/mineDaily',
+    name: 'mineDaily',
+    component: () => import(/* webpackChunkName: "about" */ '../views/mine/daily.vue'),
   },
 ];
 

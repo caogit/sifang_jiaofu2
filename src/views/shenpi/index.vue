@@ -1,11 +1,11 @@
 <template>
   <div class="mainStyle">
-    <NavBer>
+    <Navber>
       <template #headerNav>审批</template>
       <template #rightIconNav>
         <img src="../../assets/icon_cut/icon_history@2x.png" alt="" @click="toHistory" />
       </template>
-    </NavBer>
+    </Navber>
     <div class="coinmainStyle" v-if="!showMain">
       <Coms
         v-for="(item, index) in listData"
@@ -79,8 +79,6 @@
 <script>
 import Coms from '@/components/Coms.vue';
 import Tabber from '@/components/Tabber.vue';
-import NavBer from '@/components/Navber.vue';
-
 import Dialog from '@/components/Dialog.vue';
 import Publicpage from '@/components/Publicpage.vue';
 
@@ -90,8 +88,6 @@ export default {
   components: {
     Coms,
     Tabber,
-    NavBer,
-
     Dialog,
     Publicpage,
   },

@@ -5,9 +5,18 @@
     </div>
     <div class="mainStyle">
       <div class="mainTopImg">
-        <img src="../../assets/icon_cut/img_date_p@3x.png" alt="" @click="toDaily" />
-        <img src="../../assets/icon_cut/img_rest_p@3x.png" alt="" />
-        <img src="../../assets/icon_cut/img_yanchishenqin_p@3x.png" alt="" />
+        <div class="leftImg" @click="toRandow('writeDaily')">
+          <img src="../../assets/icon_cut/img_date_p@3x.png" alt="" />
+          <span class="leftText">日报</span>
+        </div>
+        <div class="leftImg">
+          <img src="../../assets/icon_cut/img_rest_p@3x.png" alt="" />
+          <span class="centerText">延迟申请</span>
+        </div>
+        <div class="leftImg" @click="toRandow('holidayApply')">
+          <img src="../../assets/icon_cut/img_yanchishenqin_p@3x.png" alt="" />
+          <span class="leftText">请假</span>
+        </div>
       </div>
       <div class="mainBottomImg">
         <p class="mainBottomImgTop">公告</p>
@@ -73,9 +82,9 @@ export default {
     };
   },
   methods: {
-    toDaily() {
+    toRandow(str) {
       this.$router.push({
-        path: '/writeDaily',
+        path: str,
       });
     },
   },
@@ -120,6 +129,23 @@ export default {
       img {
         width: 94px;
         height: 125px;
+      }
+      .leftImg {
+        position: relative;
+        color: #fff;
+        font-size: 12px;
+        .leftText {
+          display: inline-block;
+          position: absolute;
+          bottom: 34px;
+          left: 35px;
+        }
+        .centerText {
+          display: inline-block;
+          position: absolute;
+          bottom: 34px;
+          left: 24px;
+        }
       }
     }
     .mainBottomImg {

@@ -8,7 +8,7 @@
         <img src="../../assets/icon_cut/img_mine_photo@3x.png" alt="" />
         <ul class="topTitleStyle">
           <li class="topTitleText">你好，{{ requestData.realName }}</li>
-          <li class="topHintText">
+          <li class="topHintText" @click="toPersonalData">
             <span>个人资料</span>
           </li>
         </ul>
@@ -17,7 +17,11 @@
     <div class="placeholderBox"></div>
     <div class="footerBigStyle">
       <div class="footerStyle" v-for="(val, key, index) in listData" :key="index">
-        <ChangeOption v-for="(item, index) in val" :key="index">
+        <ChangeOption
+          v-for="(item, index) in val"
+          :key="index"
+          @click.native="submit(item.leftText)"
+        >
           <template #image>
             <img :src="item.image" alt="" />
           </template>
@@ -47,7 +51,7 @@ export default {
         listData1: [
           {
             image: require('../../assets/icon_cut/mine_date@3x.png'),
-            leftText: '查看日志',
+            leftText: '查看日报',
           },
           {
             image: require('../../assets/icon_cut/icon_mine_xiujiashenqin@3x.png'),
@@ -84,6 +88,52 @@ export default {
           this.requestData = res.data;
         }
       });
+    },
+    toPersonalData() {
+      this.$router.push('/personalData');
+    },
+    submit(val) {
+      switch (val) {
+        case '退出登录':
+          this.exitLogin();
+          break;
+        case '修改登录密码':
+          this.amendLoginPassword();
+          break;
+        case '查看日报':
+          this.checkDaily();
+          break;
+
+        default:
+          break;
+      }
+    },
+    exitLogin() {
+      this.request.post(ApiUrl.USER.LOGOUT).then(res => {
+        if (res.code == 200) {
+          localStorage.clear();
+          this.$router.push('/login');
+          this.$notify({ type: 'success', message: '退出成功' });
+        } else {
+          this.$notify({ type: 'danger', message: '退出失败,请重试' });
+        }
+      });
+    },
+    amendLoginPassword() {
+      let parms = {
+        newPassword: '',
+        oldPassword: '',
+      };
+      this.request.post(ApiUrl.USER.UPDATE_PASSWORD, parms).then(res => {
+        if (res.code == 200) {
+          this.$toast('修改密码成功');
+        } else {
+          this.$toast('修改密码失败');
+        }
+      });
+    },
+    checkDaily() {
+      this.$router.push('/mineDaily');
     },
   },
 };

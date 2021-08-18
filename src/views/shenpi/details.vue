@@ -22,14 +22,9 @@
 </template>
 
 <script>
-import NavBer from '@/components/Navber.vue';
-
 export default {
   name: 'shenpi',
 
-  components: {
-    NavBer,
-  },
   data() {
     return {
       listData: [

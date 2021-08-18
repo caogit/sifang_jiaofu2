@@ -24,8 +24,8 @@ module.exports = {
     port: 9527, // 开发服务器运行端口号
     proxy: {
       '/apis': {
-        target: 'https://alex188.cn/jf2app',
-        changeOrigin: true, // 支持跨域 是否修改请求头中的host
+        target: 'https://alex188.cn/h5app',
+        changeOrigin: false, // 支持跨域 是否修改请求头中的host
         ws: true,
         logLevel: 'debug',
         pathRewrite: {
