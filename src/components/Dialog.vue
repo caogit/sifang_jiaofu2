@@ -62,6 +62,7 @@ export default {
       line-height: 51px;
       border-right: 1px solid #eeeeee;
       flex: 1;
+      text-align: center;
       &:nth-last-child(1) {
         border-right: none;
       }

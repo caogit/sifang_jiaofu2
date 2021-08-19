@@ -1,8 +1,8 @@
 <template>
   <div class="detailsStyle">
-    <NavBer>
+    <Navber>
       <template #headerNav>审批详情</template>
-    </NavBer>
+    </Navber>
     <ul class="container">
       <li class="containerli" v-for="(item, index) in listData" :key="index">
         <p class="containerli_l">{{ item.leftname }}</p>

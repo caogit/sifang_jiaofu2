@@ -81,7 +81,13 @@ export default {
       ],
     };
   },
+  created() {
+    this.pastRequest();
+  },
   methods: {
+    pastRequest() {
+      this.$store.commit('LoginMan');
+    },
     toRandow(str) {
       this.$router.push({
         path: str,

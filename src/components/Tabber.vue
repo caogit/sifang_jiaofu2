@@ -2,7 +2,9 @@
   <div class="tabStyle">
     <ul class="tabchange">
       <li v-for="(item, index) in listData" :key="index" @click="tabChange(index)">
-        <p><img :src="indexData === index ? item.imgUrls : item.imgUrl" alt="" /></p>
+        <p class="tabItemStyle">
+          <img :src="indexData === index ? item.imgUrls : item.imgUrl" alt="" />
+        </p>
         <p>{{ item.text }}</p>
       </li>
     </ul>
@@ -55,10 +57,10 @@ export default {
           str = '/home';
           break;
         case 1:
-          str = '/renwu';
+          str = '/task';
           break;
         case 2:
-          str = '/shenpi';
+          str = '/approve';
           break;
         case 3:
           str = '/mine';
@@ -92,6 +94,9 @@ export default {
     img {
       width: 21px;
       height: 21px;
+    }
+    .tabItemStyle {
+      text-align: center;
     }
   }
   .tabchange li p:nth-child(1) {

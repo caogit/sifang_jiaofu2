@@ -31,7 +31,8 @@ module.exports = {
         pathRewrite: {
           '^/apis': '',
         },
-      }, // 可以跨域多个
+      },
+      // 可以跨域多个
       // '/test': {
       //   target: 'https://api.xxxx.cn',
       //   changeOrigin: true, // 支持跨域
@@ -39,6 +40,7 @@ module.exports = {
       //     '^/test': ''
       //   }
       // }
+      // },
     },
   },
   chainWebpack: config => {

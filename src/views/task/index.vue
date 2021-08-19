@@ -60,9 +60,9 @@ export default {
       this.$store.commit('shenpiData');
     },
     toHistory() {
-      this.$router.push({
-        path: '/renwu/history',
-      });
+      // this.$router.push({
+      //   path: '/renwu/history',
+      // });
     },
   },
   // created() {

@@ -17,8 +17,22 @@
       <div class="inputStyle">
         <label class="labelStyle"
           ><img src="../../assets/icon_cut/icon_lock@3x.png" alt="" />
-          <input type="text" placeholder="请输入密码" class="inputs_Style" v-model="passWord"
+          <input
+            :type="passWordType"
+            placeholder="请输入密码"
+            class="inputs_Style"
+            v-model="passWord"
         /></label>
+        <span @click="isShowPassword">
+          <img
+            :src="
+              !isShow
+                ? require('../../assets/icon_cut/icon_eye@3x.png')
+                : require('../../assets/icon_cut/icon_close_eye@3x.png')
+            "
+            alt=""
+          />
+        </span>
       </div>
       <Btns :type="1" @click.native="toHome">
         <template #btnName>登录</template>
@@ -41,6 +55,8 @@ export default {
     return {
       userName: 'suhongjie ',
       passWord: '666666',
+      isShow: false,
+      passWordType: 'text',
     };
   },
 
@@ -69,6 +85,10 @@ export default {
       } else {
         alert('请输入完整');
       }
+    },
+    isShowPassword() {
+      this.passWordType = this.passWordType === 'password' ? 'text' : 'password';
+      this.isShow = !this.isShow;
     },
   },
 };
@@ -122,23 +142,25 @@ export default {
       display: flex;
       align-items: center;
       padding-left: 15px;
+      padding-right: 15px;
       margin-bottom: 20px;
       border-radius: 10px;
+      justify-content: space-between;
 
       .labelStyle {
         display: flex;
         align-items: center;
         font-size: 12px;
         // @include Home_footer_E1E1E3;
-        img {
-          width: 20px;
-          height: 20px;
-        }
+
         .inputs_Style {
           padding-left: 10px;
         }
       }
-
+      img {
+        width: 20px;
+        height: 20px;
+      }
       .inputs_Style ::placeholder {
         font-size: 18px;
         color: #cbcbcc;

@@ -6,7 +6,7 @@
         <img src="../../assets/icon_cut/icon_history@2x.png" alt="" @click="toHistory" />
       </template>
     </Navber>
-    <div class="coinmainStyle" v-if="!showMain">
+    <div class="coinmainStyle">
       <Coms
         v-for="(item, index) in listData"
         :key="index"
@@ -65,9 +65,6 @@
         <button class="btnStyke" @click="showTanchu">一键审批</button>
       </div>
     </div>
-    <Publicpage v-else>
-      <template #someText>太好了,今天没有要审批的内容</template>
-    </Publicpage>
     <Tabber :indexData="indexData"> </Tabber>
     <div class="zhezhaoceng" v-show="showDialog" @click="backHistory"></div>
     <Dialog v-show="showDialog" :dialogDatas="dialogDatas" @tabDialog="cancelDialog">
@@ -80,7 +77,6 @@
 import Coms from '@/components/Coms.vue';
 import Tabber from '@/components/Tabber.vue';
 import Dialog from '@/components/Dialog.vue';
-import Publicpage from '@/components/Publicpage.vue';
 
 // import { ApiUrl } from '@/api/index';
 export default {
@@ -89,7 +85,6 @@ export default {
     Coms,
     Tabber,
     Dialog,
-    Publicpage,
   },
   data() {
     return {
@@ -151,7 +146,13 @@ export default {
     // 点击确定
     confirmDialog() {
       this.showDialog = false;
-      this.showMain = true;
+      this.$router.push({
+        path: '/getSubmissionInfo',
+        query: {
+          title: '审核',
+          text: '太好了，今天没有要审批的任务哦~',
+        },
+      });
     },
     // 跳转详情
     toDetails(str) {
@@ -199,6 +200,7 @@ export default {
       position: fixed;
       bottom: 10%;
       left: 0;
+      text-align: center;
       .btnStyke {
         min-width: 325px;
         height: 51px;
@@ -214,6 +216,7 @@ export default {
     .state {
       display: flex;
       // justify-content: center;
+      text-align: center;
       padding: 0px 20px;
       margin-bottom: 7px;
       img {

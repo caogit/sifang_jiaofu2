@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { getToken } from '@/utils/storage';
+import { getToken, removelocalStorage } from '@/utils/storage';
 import { Notify } from 'vant';
 
 Vue.use(VueRouter);
@@ -29,6 +29,12 @@ const routes = [
     name: 'login',
     component: () => import(/* webpackChunkName: "about" */ '../views/login/index.vue'),
   },
+  // 公共跳转页面
+  {
+    path: '/getSubmissionInfo',
+    name: 'getSubmissionInfo',
+    component: () => import(/* webpackChunkName: "about" */ '../views/getSubmissionInfo/index.vue'),
+  },
   {
     path: '/home',
     name: 'home',
@@ -37,7 +43,7 @@ const routes = [
   {
     path: '/writeDaily',
     name: 'writeDaily',
-    component: () => import(/* webpackChunkName: "about" */ '../views/daily/index.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../views/daily/indexcc.vue'),
     meta: {
       keepAlive: true,
     },
@@ -48,31 +54,31 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/holidayApply/index.vue'),
   },
   {
-    path: '/renwu',
-    name: 'renwu',
-    component: () => import(/* webpackChunkName: "about" */ '../views/renwu/index.vue'),
+    path: '/task',
+    name: 'task',
+    component: () => import(/* webpackChunkName: "about" */ '../views/task/index.vue'),
     children: [
       {
         path: 'history',
         name: 'renwuHistory',
-        component: () => import(/* webpackChunkName: "about" */ '../views/renwu/history.vue'),
+        component: () => import(/* webpackChunkName: "about" */ '../views/task/history.vue'),
       },
     ],
   },
   {
-    path: '/shenpi',
-    name: 'shenpi',
-    component: () => import(/* webpackChunkName: "about" */ '../views/shenpi/index.vue'),
+    path: '/approve',
+    name: 'approve',
+    component: () => import(/* webpackChunkName: "about" */ '../views/approve/index.vue'),
   },
   {
     path: '/shenpiDetail',
     name: 'shenpiDetail',
-    component: () => import(/* webpackChunkName: "about" */ '../views/shenpi/details.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../views/approve/details.vue'),
   },
   {
     path: '/historys',
     name: 'historys',
-    component: () => import(/* webpackChunkName: "about" */ '../views/shenpi/historys.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../views/approve/historys.vue'),
   },
   {
     path: '/mine',
@@ -97,7 +103,10 @@ const router = new VueRouter({
 // 路由跳转时使用导航守卫
 router.beforeEach((to, from, next) => {
   console.log(to, from);
-  if (to.path == '/login') return next();
+  if (to.path == '/login') {
+    removelocalStorage();
+    return next();
+  }
   // console.log(getToken('Token'));
   if (!getToken('Token')) {
     console.log(from);

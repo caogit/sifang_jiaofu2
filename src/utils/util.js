@@ -15,4 +15,11 @@ export default {
     d = d < 10 ? '0' + d : d;
     return y + '年' + m + '月' + d + '日';
   },
+  // 提交格式 yyyy-mm-dd
+  formatData(date) {
+    let y = date.getFullYear();
+    let m = date.getMonth() + 1;
+    let d = date.getDate();
+    return y + '-' + m + '-' + d;
+  },
 };

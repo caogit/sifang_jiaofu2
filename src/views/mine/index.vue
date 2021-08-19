@@ -7,7 +7,7 @@
       <div class="mainTopImg">
         <img src="../../assets/icon_cut/img_mine_photo@3x.png" alt="" />
         <ul class="topTitleStyle">
-          <li class="topTitleText">你好，{{ requestData.realName }}</li>
+          <li class="topTitleText">你好，{{ LoginManData.realName }}</li>
           <li class="topHintText" @click="toPersonalData">
             <span>个人资料</span>
           </li>
@@ -75,20 +75,14 @@ export default {
           },
         ],
       },
-      requestData: '',
     };
   },
-  created() {
-    this.pastRequest();
+  computed: {
+    LoginManData() {
+      return this.$store.state.LoginManData;
+    },
   },
   methods: {
-    pastRequest() {
-      this.request.post(ApiUrl.USER.GETLOGIN_USER_INFO).then(res => {
-        if (res.code == 200) {
-          this.requestData = res.data;
-        }
-      });
-    },
     toPersonalData() {
       this.$router.push('/personalData');
     },

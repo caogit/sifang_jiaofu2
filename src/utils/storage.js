@@ -39,5 +39,13 @@ export function getToken(names) {
     } else {
       return str.value;
     }
+  } else {
+    return false;
   }
+}
+/**
+ * 清空localStorage
+ */
+export function removelocalStorage() {
+  localStorage.clear();
 }

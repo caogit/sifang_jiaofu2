@@ -4,17 +4,17 @@
       <template #headerNav>休假申请</template>
     </Navber>
     <div class="coverBox">
-      <ArroutLayout @click.native="showPopup('休假类型', 0)">
+      <ArroutLayout @click.native="showPopup(0)">
         <template #leftText>休假类型</template>
         <template #rightText> {{ leaveType }}</template>
       </ArroutLayout>
     </div>
     <div class="coverBox">
-      <ArroutLayout @click.native="showPopup('休假开始日期', 1)">
+      <ArroutLayout @click.native="showPopup(1)">
         <template #leftText>休假开始日期</template>
         <template #rightText>{{ util.selectDataY(HolidayStartDateData) }}</template>
       </ArroutLayout>
-      <ArroutLayout @click.native="showPopup('休假结束日期', 2)">
+      <ArroutLayout @click.native="showPopup(2)">
         <template #leftText>休假结束日期</template>
         <template #rightText>{{ util.selectDataY(HolidayEndDateData) }}</template>
       </ArroutLayout>
@@ -36,7 +36,7 @@
       </ArroutLayout>
     </div>
     <div class="coverBox">
-      <ArroutLayout @click.native="showPopup('审批人', 3)">
+      <ArroutLayout @click.native="showPopup(3)">
         <template #leftText>审批人</template>
         <template #freeRight>{{ taskPeople }} </template>
       </ArroutLayout>
@@ -100,7 +100,7 @@ export default {
   },
 
   methods: {
-    showPopup(sts, index) {
+    showPopup(index) {
       this.showIndex = index;
       this.show = true;
     },
@@ -143,6 +143,7 @@ export default {
     background-color: #fff;
     .textareaStyle {
       height: 140px;
+      text-align: center;
       .textareaInputStyle {
         color: #bdbdbd;
         font-size: 13px;

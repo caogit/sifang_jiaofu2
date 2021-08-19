@@ -8,6 +8,7 @@ export const ApiUrl = {
   },
   // 首页
   HOME: {
+    SAVE: '/workDaily/work-daily/save', // 写日报
     GETLIST_TASKBYUSER: '/businessTask/business-task/getListTaskByUser', //获取在途任务列表
   },
 };
