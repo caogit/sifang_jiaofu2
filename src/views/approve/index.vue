@@ -237,7 +237,6 @@ export default {
       }
     }
     .state_footer {
-      padding: 0 10px;
       display: flex;
       justify-content: space-between;
       font-size: 14px;
