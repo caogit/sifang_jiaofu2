@@ -13,7 +13,7 @@
     </div>
     <div class="coverBox" v-for="(i, sub) in addIndex" :key="sub">
       <van-collapse v-model="activeNames" accordion>
-        <van-collapse-item title="任务" :name="sub" :value="obj[`fn${sub}`]">
+        <van-collapse-item title="任务" :name="sub" :value="obj[`${sub}`]">
           <ul
             class="showItemDataStyle"
             v-for="(item, index) in taskDetailList"
@@ -33,15 +33,15 @@
           </ul>
         </van-collapse-item>
       </van-collapse>
-      <ArroutLayout @click.native="showPopup(1, sub)">
+      <ArroutLayout @click.native="showPopup(1, sub)" :isTopArrow="isTopArrow === sub">
         <template #leftText>工时</template>
-        <template #rightText>{{ manHourObj[`fn${sub}`] }}</template>
+        <template #rightText>{{ manHourObj[`${sub}`] }}</template>
       </ArroutLayout>
       <ArroutLayout :showRightImg="false">
         <template #leftText>今日工作</template>
       </ArroutLayout>
       <div class="showInputStyle">
-        <textarea class="showInputInStyle" v-model="todayObj[`fn${sub}`]" />
+        <textarea class="showInputInStyle" v-model="todayObj[`${sub}`]" />
       </div>
     </div>
     <div id="addStyle" @click="addNewTemplate">
@@ -56,7 +56,13 @@
         title="选择月日"
         @confirm="onConfirm"
       />
-      <van-picker v-show="addTofIndex == 1" show-toolbar :columns="columns" @confirm="onConfirm" />
+      <van-picker
+        v-show="addTofIndex == 1"
+        @cancel="onCancel"
+        show-toolbar
+        :columns="columns"
+        @confirm="onConfirm"
+      />
     </van-popup>
     <div class="SubmitdailyStyle">
       <Btns :type="1" @click.native="submitDaily">
@@ -104,6 +110,7 @@ export default {
       columns: ['2小时', '4小时', '6小时', '8小时'],
       // 临时工时index
       linmanHourIndex: 0,
+      isTopArrow: '',
     };
   },
   created() {
@@ -113,6 +120,15 @@ export default {
       }
       console.log(res);
     });
+    // 默认选中第一个任务
+  },
+  // false时将图片设置初始收起状态
+  watch: {
+    show: function (newValue) {
+      if (newValue == false) {
+        this.isTopArrow = '';
+      }
+    },
   },
   computed: {
     objData() {
@@ -123,9 +139,9 @@ export default {
   methods: {
     showDiffImage(id, value, index, sub) {
       // 任务赋值
-      this.$set(this.obj, `fn${sub}`, value);
+      this.$set(this.obj, `${sub}`, value);
       // 任务id赋值
-      this.$set(this.taskIdObj, `fn${sub}`, id);
+      this.$set(this.taskIdObj, `${sub}`, id);
       // 详情图片
       this.taskDetailIndex[sub] = index;
       // 手风琴
@@ -134,29 +150,37 @@ export default {
     // 添加+
     addNewTemplate() {
       this.addIndex += 1;
+      // 以下都可以省略，$set会自动添加值，不只是覆盖
       // 任务值obj
-      this.$set(this.obj, `fn${this.addIndex - 1}`, '');
+      // this.$set(this.obj, `${this.addIndex - 1}`, '');
       // 任务id的obj
-      this.$set(this.taskIdObj, `fn${this.addIndex - 1}`, '');
-
+      // this.$set(this.taskIdObj, `${this.addIndex - 1}`, '');
       // 工时obj
-      this.$set(this.manHourObj, `fn${this.addIndex - 1}`, '');
+      // this.$set(this.manHourObj, `${this.addIndex - 1}`, '');
       // 今日工作obj
-      this.$set(this.todayObj, `fn${this.addIndex - 1}`, '');
-      console.log(this.obj);
+      // this.$set(this.todayObj, `${this.addIndex - 1}`, '');
+      console.log('obj', this.obj);
     },
     showPopup(index, sub) {
       // 临时存放工时index
       this.linmanHourIndex = sub;
+      // 判断图片
+      this.isTopArrow = sub;
+
       // 展示什么picker
       this.addTofIndex = index;
       this.show = true;
+      //
     },
     onConfirm(value) {
       // 工时赋值
-      this.$set(this.manHourObj, `fn${this.linmanHourIndex}`, value);
-      // 今日工作赋值
+      this.$set(this.manHourObj, `${this.linmanHourIndex}`, value);
+
       this.show = false;
+    },
+    onCancel() {
+      this.show = false;
+      this.isTopArrow = '';
     },
     submitDaily() {
       // eslint-disable-next-line no-debugger
@@ -168,23 +192,23 @@ export default {
       // for下addIndex
       for (let i = 0; i <= this.addIndex - 1; i++) {
         console.log(this.taskIdObj, this.obj);
-        if (this.taskIdObj[`fn${i}`] == undefined || this.taskIdObj[`fn${i}`] == '') {
+        if (this.taskIdObj[`${i}`] == undefined || this.taskIdObj[`${i}`] == '') {
           this.$toast('请选择任务');
           return;
         }
-        if (this.manHourObj[`fn${i}`] == undefined || this.manHourObj[`fn${i}`] == 0) {
+        if (this.manHourObj[`${i}`] == undefined || this.manHourObj[`${i}`] == 0) {
           this.$toast('请选择工时');
           return;
         }
-        if (this.todayObj[`fn${i}`] == undefined || this.todayObj[`fn${i}`] == '') {
+        if (this.todayObj[`${i}`] == undefined || this.todayObj[`${i}`] == '') {
           this.$toast('请输入今日工作');
           return;
         }
         arr.push({
-          taskId: this.taskIdObj[`fn${i}`], //任务id
-          taskName: this.obj[`fn${i}`], //任务名称
-          workerLength: Number(this.manHourObj[`fn${i}`].substr(0, 1)), //工时
-          workerInfo: this.todayObj[`fn${i}`], //工作内容
+          taskId: this.taskIdObj[`${i}`], //任务id
+          taskName: this.obj[`${i}`], //任务名称
+          workerLength: Number(this.manHourObj[`${i}`].substr(0, 1)), //工时
+          workerInfo: this.todayObj[`${i}`], //工作内容
         });
       }
 
@@ -194,6 +218,7 @@ export default {
         createTime: this.util.formatData(new Date()), //创建日期 当天时间
         dailyDetailList: arr,
       };
+      console.log(parms);
       this.request.post(ApiUrl.HOME.SAVE, parms).then(res => {
         if (res.code == 200) {
           this.$router.push({

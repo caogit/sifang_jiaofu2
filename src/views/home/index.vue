@@ -33,16 +33,13 @@
       </p>
       <Footers :listData="listData"></Footers>
     </div>
-    <Tabber> </Tabber>
   </div>
 </template>
 
 <script>
-import Tabber from '@/components/Tabber.vue';
 import Footers from '@/components/publicHome/Footers.vue';
 export default {
   components: {
-    Tabber,
     Footers,
   },
   data() {

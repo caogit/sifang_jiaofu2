@@ -1,13 +1,15 @@
 <template>
   <div class="navStyle">
-    <div class="touStyle" @click="toBack">
-      <img src="../assets//icon_cut/nav_raback@2x.png" alt="" />
-    </div>
-    <div class="headerNav">
-      <slot name="headerNav"></slot>
-    </div>
-    <div class="rightIcon">
-      <slot name="rightIconNav"></slot>
+    <div id="canTopFixed">
+      <div class="touStyle" @click="toBack">
+        <img src="../assets//icon_cut/nav_raback@2x.png" alt="" />
+      </div>
+      <div class="headerNav">
+        <slot name="headerNav"></slot>
+      </div>
+      <div class="rightIcon">
+        <slot name="rightIconNav"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -27,9 +29,14 @@ export default {
 .navStyle {
   width: 100%;
   height: 44px;
-  background-color: #fff;
-
-  position: relative;
+  #canTopFixed {
+    width: 100%;
+    background-color: #fff;
+    height: 44px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
   .touStyle {
     position: absolute;
     left: 5%;

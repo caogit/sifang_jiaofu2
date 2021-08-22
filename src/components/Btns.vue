@@ -35,7 +35,7 @@ export default {
   line-height: 51px;
   text-align: center;
 
-  font-size: 22px;
+  font-size: 16px;
   color: #fff;
   border-radius: 10px;
 }
@@ -48,7 +48,7 @@ export default {
   line-height: 51px;
   text-align: center;
 
-  font-size: 22px;
+  font-size: 16px;
   color: blue;
   border-radius: 10px;
 }
@@ -60,7 +60,7 @@ export default {
   line-height: 51px;
   text-align: center;
 
-  font-size: 22px;
+  font-size: 16px;
   color: #fff;
   border-radius: 10px;
 }

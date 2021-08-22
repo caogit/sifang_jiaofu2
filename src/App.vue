@@ -4,10 +4,17 @@
       <router-view />
     </keep-alive>
     <router-view v-if="!$route.meta.keepAlive"></router-view>
+    <Tabber v-if="$route.meta.showFooter"></Tabber>
   </div>
 </template>
 <script>
-export default {};
+import Tabber from '@/components/Tabber.vue';
+
+export default {
+  components: {
+    Tabber,
+  },
+};
 </script>
 <style>
 * {
@@ -29,5 +36,9 @@ body .van-overflow-hidden {
   /* text-align: center; */
   color: #2c3e50;
   height: 100%;
+}
+#nprogress .bar {
+  /*  自定义颜色 */
+  background: blue !important;
 }
 </style>

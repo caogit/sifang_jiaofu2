@@ -29,19 +29,15 @@
         </ChangeOption>
       </div>
     </div>
-
-    <Tabber :indexData="indexData"> </Tabber>
   </div>
 </template>
 
 <script>
-import Tabber from '@/components/Tabber.vue';
 import ChangeOption from '@/components/publicMine/ChangeOption.vue';
 import { ApiUrl } from '@/api/index';
 
 export default {
   components: {
-    Tabber,
     ChangeOption,
   },
   data() {

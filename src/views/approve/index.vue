@@ -61,11 +61,12 @@
           </ol>
         </template>
       </Coms>
-      <div class="fixBtnStyle">
-        <button class="btnStyke" @click="showTanchu">一键审批</button>
+      <div class="takingFix">
+        <div class="fixBtnStyle">
+          <button class="btnStyke" @click="showTanchu">一键审批</button>
+        </div>
       </div>
     </div>
-    <Tabber :indexData="indexData"> </Tabber>
     <div class="zhezhaoceng" v-show="showDialog" @click="backHistory"></div>
     <Dialog v-show="showDialog" :dialogDatas="dialogDatas" @tabDialog="cancelDialog">
       <template #dialogTop>确定全部申请通过</template>
@@ -75,7 +76,7 @@
 
 <script>
 import Coms from '@/components/Coms.vue';
-import Tabber from '@/components/Tabber.vue';
+
 import Dialog from '@/components/Dialog.vue';
 
 // import { ApiUrl } from '@/api/index';
@@ -83,7 +84,6 @@ export default {
   name: 'shenpi',
   components: {
     Coms,
-    Tabber,
     Dialog,
   },
   data() {
@@ -178,7 +178,9 @@ export default {
 
 <style lang="scss" scoped>
 .mainStyle {
-  height: calc(100% - 256px);
+  // height: calc(100% - 150px);
+  height: calc(100% - 83px);
+
   display: flex;
   flex-direction: column;
 
@@ -192,25 +194,31 @@ export default {
     z-index: 100;
   }
   .coinmainStyle {
+    height: calc(100% - 83px);
     overflow-y: scroll;
-    .fixBtnStyle {
+    .takingFix {
       width: 100%;
-      height: 173px;
-      line-height: 173px;
-      position: fixed;
-      bottom: 10%;
-      left: 0;
-      text-align: center;
-      .btnStyke {
-        min-width: 325px;
-        height: 51px;
-        background-color: #2f80ed;
-        line-height: 51px;
-        text-align: center;
+      .fixBtnStyle {
+        width: 100%;
+        height: 173px;
+        line-height: 173px;
+        position: fixed;
+        bottom: 10%;
+        background-color: #f9fafc;
 
-        font-size: 18px;
-        color: #fff;
-        border-radius: 10px;
+        left: 0;
+        text-align: center;
+        .btnStyke {
+          min-width: 325px;
+          height: 51px;
+          background-color: #2f80ed;
+          line-height: 51px;
+          text-align: center;
+
+          font-size: 18px;
+          color: #fff;
+          border-radius: 10px;
+        }
       }
     }
     .state {
@@ -219,6 +227,7 @@ export default {
       text-align: center;
       padding: 0px 20px;
       margin-bottom: 7px;
+      margin-top: 10px;
       img {
         width: 18px;
         height: 18px;
@@ -240,6 +249,7 @@ export default {
       display: flex;
       justify-content: space-between;
       font-size: 14px;
+      margin-top: 7px;
     }
     .active {
       color: #3282ed;

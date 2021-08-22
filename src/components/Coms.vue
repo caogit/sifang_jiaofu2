@@ -71,11 +71,13 @@ export default {
   background-color: #ffffff;
   .header {
     width: 100%;
-    height: 44px;
+
     display: flex;
     justify-content: space-between;
-
+    margin-bottom: 10px;
     .headerLeft {
+      width: 243px;
+      height: 100%;
       font-size: 16px;
       font-weight: 600;
     }

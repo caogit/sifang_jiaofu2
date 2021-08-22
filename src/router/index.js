@@ -2,6 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { getToken, removelocalStorage } from '@/utils/storage';
 import { Notify } from 'vant';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css'; // progress bar style
 
 Vue.use(VueRouter);
 
@@ -39,6 +41,10 @@ const routes = [
     path: '/home',
     name: 'home',
     component: () => import(/* webpackChunkName: "about" */ '../views/home/index.vue'),
+    meta: {
+      showFooter: true,
+      headerNum: 0,
+    },
   },
   {
     path: '/writeDaily',
@@ -57,6 +63,10 @@ const routes = [
     path: '/task',
     name: 'task',
     component: () => import(/* webpackChunkName: "about" */ '../views/task/index.vue'),
+    meta: {
+      showFooter: true,
+      headerNum: 1,
+    },
     children: [
       {
         path: 'history',
@@ -69,6 +79,10 @@ const routes = [
     path: '/approve',
     name: 'approve',
     component: () => import(/* webpackChunkName: "about" */ '../views/approve/index.vue'),
+    meta: {
+      showFooter: true,
+      headerNum: 2,
+    },
   },
   {
     path: '/shenpiDetail',
@@ -84,6 +98,10 @@ const routes = [
     path: '/mine',
     name: 'mine',
     component: () => import(/* webpackChunkName: "about" */ '../views/mine/index.vue'),
+    meta: {
+      showFooter: true,
+      headerNum: 3,
+    },
   },
   {
     path: '/personalData',
@@ -102,6 +120,7 @@ const router = new VueRouter({
 });
 // 路由跳转时使用导航守卫
 router.beforeEach((to, from, next) => {
+  NProgress.start(); // 开始进度条
   console.log(to, from);
   if (to.path == '/login') {
     removelocalStorage();
@@ -121,5 +140,10 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
+});
+
+//路由钩子函数 - 跳转后完成进度条加载
+router.afterEach(() => {
+  NProgress.done(); // 完成进度条
 });
 export default router;
