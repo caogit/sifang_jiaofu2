@@ -110,17 +110,7 @@ export default {
       });
     },
     amendLoginPassword() {
-      let parms = {
-        newPassword: '',
-        oldPassword: '',
-      };
-      this.request.post(ApiUrl.USER.UPDATE_PASSWORD, parms).then(res => {
-        if (res.code == 200) {
-          this.$toast('修改密码成功');
-        } else {
-          this.$toast('修改密码失败');
-        }
-      });
+      this.$router.push('/changePassword');
     },
     checkDaily() {
       this.$router.push('/mineDaily');

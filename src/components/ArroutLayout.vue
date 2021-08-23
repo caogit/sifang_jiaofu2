@@ -7,7 +7,7 @@
       <slot name="freeRight">
         <ul class="freeRightStyle">
           <!-- 过滤器一会试试 -->
-          <li>
+          <li class="freeItemRightStyle">
             <slot name="rightText"> </slot>
           </li>
           <li v-if="showRightImg">
@@ -35,7 +35,7 @@ export default {
     },
   },
   created() {
-    console.log(this.isTopArrow);
+    // console.log(this.isTopArrow);
   },
 };
 </script>
@@ -55,6 +55,7 @@ export default {
     .freeRightStyle {
       display: flex;
       align-items: center;
+
       img {
         width: 18px;
         height: 18px;

@@ -10,5 +10,7 @@ export const ApiUrl = {
   HOME: {
     SAVE: '/workDaily/work-daily/save', // 写日报
     GETLIST_TASKBYUSER: '/businessTask/business-task/getListTaskByUser', //获取在途任务列表
+    WORK_VACATION_SAVE: '/workVacation/work-vacation/save', // 新增休假申请
+    GETMANGET_LIST: '/personnelInfo/personnel-info/getManagerList', // 获取项目经理列表
   },
 };

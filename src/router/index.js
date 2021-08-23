@@ -49,7 +49,7 @@ const routes = [
   {
     path: '/writeDaily',
     name: 'writeDaily',
-    component: () => import(/* webpackChunkName: "about" */ '../views/daily/indexcc.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../views/daily/index.vue'),
     meta: {
       keepAlive: true,
     },
@@ -112,6 +112,11 @@ const routes = [
     path: '/mineDaily',
     name: 'mineDaily',
     component: () => import(/* webpackChunkName: "about" */ '../views/mine/daily.vue'),
+  },
+  {
+    path: '/changePassword',
+    name: 'changePassword',
+    component: () => import(/* webpackChunkName: "about" */ '../views/mine/changePassword.vue'),
   },
 ];
 

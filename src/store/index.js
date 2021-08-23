@@ -1,7 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { ApiUrl } from '@/api/index';
+import VuexPersistence from 'vuex-persist';
 Vue.use(Vuex);
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+});
 
 const store = new Vuex.Store({
   state: {
@@ -27,7 +32,15 @@ const store = new Vuex.Store({
       });
     },
   },
-  actions: {},
+  actions: {
+    // 请求登陆人数据
+    LoginMans(content) {
+      setTimeout(() => {
+        content.commit('LoginMan');
+      }, 300);
+    },
+  },
+  plugins: [vuexLocal.plugin],
 });
 
 export default store;

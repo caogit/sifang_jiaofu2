@@ -35,7 +35,7 @@ function request(url, params, options = { loading: true, mock: false, error: tru
         // 此处作用很大，可以扩展很多功能。
         // 比如对接多个后台，数据结构不一致，可做接口适配器
         // 也可对返回日期/金额/数字等统一做集中处理
-        if (res.code === 200) {
+        if (res) {
           resolve(res);
         } else {
           // 通过配置可关闭错误提示

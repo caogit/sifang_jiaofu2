@@ -34,7 +34,6 @@ export default {
   background-color: #2f80ed;
   line-height: 51px;
   text-align: center;
-
   font-size: 16px;
   color: #fff;
   border-radius: 10px;

@@ -6,7 +6,7 @@
           <p class="tabItemStyle">
             <img :src="indexData === index ? item.imgUrls : item.imgUrl" alt="" />
           </p>
-          <p>{{ item.text }}</p>
+          <p :style="{ color: indexData === index ? '#2F80ED' : '#2F2E41' }">{{ item.text }}</p>
         </li>
       </ul>
     </div>
@@ -92,7 +92,7 @@ export default {
     position: fixed;
     bottom: 0;
     left: 0;
-    font-size: 16px;
+    font-size: 14px;
     .tabchange {
       height: 100%;
       display: flex;

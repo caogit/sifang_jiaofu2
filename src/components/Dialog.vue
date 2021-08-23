@@ -38,7 +38,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   min-width: 270px;
-  z-index: 200;
+  z-index: 500;
   background-color: #fff;
   border-radius: 12px;
   font-size: 16px;

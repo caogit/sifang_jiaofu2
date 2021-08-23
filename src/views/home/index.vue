@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     pastRequest() {
-      this.$store.commit('LoginMan');
+      this.$store.dispatch('LoginMans');
     },
     toRandow(str) {
       this.$router.push({
