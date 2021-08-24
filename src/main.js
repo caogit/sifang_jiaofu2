@@ -5,17 +5,7 @@ import Vuex from 'vuex';
 import store from './store/index';
 import 'amfe-flexible';
 import '@/style/reset.css';
-import {
-  Picker,
-  Popup,
-  Toast,
-  Col,
-  Row,
-  DatetimePicker,
-  Notify,
-  Collapse,
-  CollapseItem,
-} from 'vant';
+import { Picker, Popup, Toast, Col, Row, DatetimePicker, Collapse, CollapseItem } from 'vant';
 import util from '@/utils/util';
 // 导入插件
 import request from './api/request';
@@ -39,7 +29,7 @@ Vue.use(Vuex);
 Vue.use(Picker);
 Vue.use(Popup);
 Vue.use(DatetimePicker);
-Vue.use(Notify);
+
 Vue.use(Collapse);
 Vue.use(CollapseItem);
 Vue.use(Toast);

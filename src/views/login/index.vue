@@ -78,7 +78,7 @@ export default {
               expires: 3600 * 1000 * 24 * 7,
               deposit: new Date().getTime(),
             });
-            this.$notify({ type: 'success', message: '登录成功' });
+            this.$toast('登录成功');
             this.$router.push('/home');
           }
         });

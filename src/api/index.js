@@ -13,4 +13,10 @@ export const ApiUrl = {
     WORK_VACATION_SAVE: '/workVacation/work-vacation/save', // 新增休假申请
     GETMANGET_LIST: '/personnelInfo/personnel-info/getManagerList', // 获取项目经理列表
   },
+  // 我的
+  MINE: {
+    GETLIST_BYPAGE: '/workDaily/work-daily/getListByPage',
+    WORK_DAILT_DEL: '/workDaily/work-daily/del', // 删除日报
+    WORK_DAILT_FIND_PARAM: '/workDaily/work-daily/findParam', // 日报详情
+  },
 };

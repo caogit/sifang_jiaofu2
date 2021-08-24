@@ -24,6 +24,8 @@ function request(url, params, options = { loading: true, mock: false, error: tru
     if (method == 'get') data = { params };
     // post请求使用data字段
     if (method == 'post') data = { data: params };
+    // delete请求使用data字段
+    if (method == 'delete') data = { data: params };
     // 通过mock平台可对局部接口进行mock设置
     // if (options.mock) url = 'http://www.mock.com/mock/xxxx/api';
     instance({
@@ -59,7 +61,12 @@ function get(url, params, options) {
 function post(url, params, options) {
   return request(url, params, options, 'post');
 }
+// 封装DELETE请求
+function deletes(url, params, options) {
+  return request(url, params, options, 'delete');
+}
 export default {
   get,
   post,
+  deletes,
 };

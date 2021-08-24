@@ -80,6 +80,7 @@ export default {
       height: 100%;
       font-size: 16px;
       font-weight: 600;
+      line-height: 24px;
     }
     #publicStyle {
       @include change;

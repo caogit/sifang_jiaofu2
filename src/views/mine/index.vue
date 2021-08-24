@@ -103,9 +103,9 @@ export default {
         if (res.code == 200) {
           localStorage.clear();
           this.$router.push('/login');
-          this.$notify({ type: 'success', message: '退出成功' });
+          this.$toast('退出成功');
         } else {
-          this.$notify({ type: 'danger', message: '退出失败,请重试' });
+          this.$toast('退出失败,请重试');
         }
       });
     },

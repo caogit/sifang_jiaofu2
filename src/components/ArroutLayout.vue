@@ -1,7 +1,7 @@
 <template>
   <div class="comsStyle">
     <div class="freeStyle">
-      <div>
+      <div class="leftTextStyle">
         <slot name="leftText"> </slot>
       </div>
       <slot name="freeRight">
@@ -52,10 +52,17 @@ export default {
     font-size: 15px;
     font-weight: 500;
     padding: 0 16px;
+    .leftTextStyle {
+      width: 30%;
+    }
     .freeRightStyle {
+      // width: 90%;
       display: flex;
       align-items: center;
-
+      .freeItemRightStyle {
+        text-align: right;
+        line-height: 16px;
+      }
       img {
         width: 18px;
         height: 18px;

@@ -4,21 +4,32 @@
       <div class="titleStyle">
         <div class="titleMessage">审批时间</div>
         <ul class="shenpiTimeStyle">
-          <li>
+          <li @click="ClickTime(0)">
             <p class="timeTopStyle">开始时间</p>
-            <p class="timeBottomStyle">请选择</p>
+
+            <p
+              class="timeBottomStyle"
+              :style="{ color: startTime === '请选择' ? '#C4C4C4' : '#515151' }"
+            >
+              {{ this.startTime }}
+            </p>
           </li>
           <li class="henxian"></li>
-          <li>
+          <li @click="ClickTime(1)">
             <p class="timeTopStyle">结束时间</p>
-            <p class="timeBottomStyle">请选择</p>
+            <p
+              class="timeBottomStyle"
+              :style="{ color: startTime === '请选择' ? '#C4C4C4' : '#515151' }"
+            >
+              {{ this.endTime }}
+            </p>
           </li>
         </ul>
       </div>
     </div>
     <div class="BtnsfixStyle">
       <button class="smallStyle">重置</button>
-      <button class="smallStyle3">确定</button>
+      <button class="smallStyle3" @click="Btns">确定</button>
     </div>
   </div>
 </template>
@@ -26,6 +37,26 @@
 <script>
 export default {
   components: {},
+  props: {
+    startTime: {
+      type: [String, Date],
+      default: '请选择',
+    },
+    endTime: {
+      type: [String, Date],
+      default: '请选择',
+    },
+  },
+
+  methods: {
+    ClickTime(sts) {
+      this.$emit('ClickTime', sts);
+    },
+    Btns() {
+      let sts = [this.startTime, this.endTime];
+      this.$emit('confirmBtns', sts);
+    },
+  },
 };
 </script>
 
@@ -38,7 +69,7 @@ export default {
   right: 0;
   top: 0;
   transition: all 2s;
-  z-index: 200;
+  z-index: 500;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

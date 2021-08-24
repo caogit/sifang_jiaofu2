@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { getToken, removelocalStorage } from '@/utils/storage';
-import { Notify } from 'vant';
+import { Toast } from 'vant';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css'; // progress bar style
 
@@ -114,6 +114,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/mine/daily.vue'),
   },
   {
+    path: '/mineDailyDetail',
+    name: 'mineDailyDetail',
+    component: () => import(/* webpackChunkName: "about" */ '../views/mine/dailyDetail.vue'),
+  },
+  {
     path: '/changePassword',
     name: 'changePassword',
     component: () => import(/* webpackChunkName: "about" */ '../views/mine/changePassword.vue'),
@@ -136,10 +141,10 @@ router.beforeEach((to, from, next) => {
     console.log(from);
     // 如果拿不到了Token的话就回到登录页
     if (from.path == '/login') {
-      Notify({ type: 'danger', message: '请先登录' });
+      Toast('请先登录');
       return next('/login');
     } else {
-      Notify({ type: 'danger', message: 'token失效，请重新登录' });
+      Toast('token失效，请重新登录');
       return next('/login');
     }
   } else {
