@@ -24,23 +24,23 @@ const routes = [
   {
     path: '/',
     redirect: '/login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/login/index.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/login/index.vue'),
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/login/index.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/login/index.vue'),
   },
   // 公共跳转页面
   {
     path: '/getSubmissionInfo',
     name: 'getSubmissionInfo',
-    component: () => import(/* webpackChunkName: "about" */ '../views/getSubmissionInfo/index.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/getSubmissionInfo/index.vue'),
   },
   {
     path: '/home',
     name: 'home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/home/index.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/home/index.vue'),
     meta: {
       showFooter: true,
       headerNum: 0,
@@ -49,7 +49,7 @@ const routes = [
   {
     path: '/writeDaily',
     name: 'writeDaily',
-    component: () => import(/* webpackChunkName: "about" */ '../views/daily/index.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/daily/index.vue'),
     meta: {
       keepAlive: true,
     },
@@ -57,12 +57,12 @@ const routes = [
   {
     path: '/holidayApply',
     name: 'holidayApply',
-    component: () => import(/* webpackChunkName: "about" */ '../views/holidayApply/index.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/holidayApply/index.vue'),
   },
   {
     path: '/task',
     name: 'task',
-    component: () => import(/* webpackChunkName: "about" */ '../views/task/index.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/task/index.vue'),
     meta: {
       showFooter: true,
       headerNum: 1,
@@ -71,14 +71,14 @@ const routes = [
       {
         path: 'history',
         name: 'renwuHistory',
-        component: () => import(/* webpackChunkName: "about" */ '../views/task/history.vue'),
+        component: () => import(/* webpackChunkName: "about" */ '@/views/task/history.vue'),
       },
     ],
   },
   {
     path: '/approve',
     name: 'approve',
-    component: () => import(/* webpackChunkName: "about" */ '../views/approve/index.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/approve/index.vue'),
     meta: {
       showFooter: true,
       headerNum: 2,
@@ -87,17 +87,17 @@ const routes = [
   {
     path: '/shenpiDetail',
     name: 'shenpiDetail',
-    component: () => import(/* webpackChunkName: "about" */ '../views/approve/details.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/approve/details.vue'),
   },
   {
     path: '/historys',
     name: 'historys',
-    component: () => import(/* webpackChunkName: "about" */ '../views/approve/historys.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/approve/historys.vue'),
   },
   {
     path: '/mine',
     name: 'mine',
-    component: () => import(/* webpackChunkName: "about" */ '../views/mine/index.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/mine/index.vue'),
     meta: {
       showFooter: true,
       headerNum: 3,
@@ -106,22 +106,27 @@ const routes = [
   {
     path: '/personalData',
     name: 'personalData',
-    component: () => import(/* webpackChunkName: "about" */ '../views/mine/personalData.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/mine/personalData.vue'),
   },
   {
     path: '/mineDaily',
     name: 'mineDaily',
-    component: () => import(/* webpackChunkName: "about" */ '../views/mine/daily.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/mine/daily.vue'),
   },
   {
     path: '/mineDailyDetail',
     name: 'mineDailyDetail',
-    component: () => import(/* webpackChunkName: "about" */ '../views/mine/dailyDetail.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/mine/dailyDetail.vue'),
+  },
+  {
+    path: '/mineamendDaily',
+    name: 'mineamendDaily',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/mine/amendDaily.vue'),
   },
   {
     path: '/changePassword',
     name: 'changePassword',
-    component: () => import(/* webpackChunkName: "about" */ '../views/mine/changePassword.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/mine/changePassword.vue'),
   },
 ];
 

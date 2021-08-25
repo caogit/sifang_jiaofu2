@@ -129,7 +129,7 @@
 </template>
 
 <script>
-import ArroutLayout from '../../components/ArroutLayout.vue';
+import ArroutLayout from '@/components/ArroutLayout.vue';
 import Btns from '@/components/Btns.vue';
 import { ApiUrl } from '@/api/index';
 

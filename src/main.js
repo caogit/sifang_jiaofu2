@@ -4,16 +4,16 @@ import router from './router';
 import Vuex from 'vuex';
 import store from './store/index';
 import 'amfe-flexible';
-import '@/style/reset.css';
+import '@/assets/style/reset.css';
 import { Picker, Popup, Toast, Col, Row, DatetimePicker, Collapse, CollapseItem } from 'vant';
 import util from '@/utils/util';
 // 导入插件
-import request from './api/request';
+import request from '@/api/request';
 
 // 全局引入Navbar
-import Navber from './components/Navber';
+import Navber from '@/components/Navber';
 // 全局引入BaseLayout
-import BaseLayout from './components/BaseLayout/index';
+import BaseLayout from '@/components/BaseLayout/index';
 
 // 全局注册组件
 Vue.component('Navber', Navber);

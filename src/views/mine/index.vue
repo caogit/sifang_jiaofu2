@@ -5,7 +5,7 @@
     </div>
     <div class="mainStyle">
       <div class="mainTopImg">
-        <img src="../../assets/icon_cut/img_mine_photo@3x.png" alt="" />
+        <img src="@/assets/icon_cut/img_mine_photo@3x.png" alt="" />
         <ul class="topTitleStyle">
           <li class="topTitleText">你好，{{ LoginManData.realName }}</li>
           <li class="topHintText" @click="toPersonalData">
@@ -46,27 +46,27 @@ export default {
       listData: {
         listData1: [
           {
-            image: require('../../assets/icon_cut/mine_date@3x.png'),
+            image: require('@/assets/icon_cut/mine_date@3x.png'),
             leftText: '查看日报',
           },
           {
-            image: require('../../assets/icon_cut/icon_mine_xiujiashenqin@3x.png'),
+            image: require('@/assets/icon_cut/icon_mine_xiujiashenqin@3x.png'),
             leftText: '查看延迟申请',
           },
           {
-            image: require('../../assets/icon_cut/icon_mine_yanshishenqin@3x.png'),
+            image: require('@/assets/icon_cut/icon_mine_yanshishenqin@3x.png'),
             leftText: '我的休假申请',
           },
         ],
         listData2: [
           {
-            image: require('../../assets/icon_cut/mine_code@3x.png'),
+            image: require('@/assets/icon_cut/mine_code@3x.png'),
             leftText: '修改登录密码',
           },
         ],
         listData3: [
           {
-            image: require('../../assets/icon_cut/icon_mine_iphone@3x.png'),
+            image: require('@/assets/icon_cut/icon_mine_iphone@3x.png'),
             leftText: '退出登录',
           },
         ],

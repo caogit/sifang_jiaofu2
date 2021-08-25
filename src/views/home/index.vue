@@ -6,15 +6,15 @@
     <div class="mainStyle">
       <div class="mainTopImg">
         <div class="leftImg" @click="toRandow('writeDaily')">
-          <img src="../../assets/icon_cut/img_date_p@3x.png" alt="" />
+          <img src="@/assets/icon_cut/img_date_p@3x.png" alt="" />
           <span class="leftText">日报</span>
         </div>
         <div class="leftImg">
-          <img src="../../assets/icon_cut/img_rest_p@3x.png" alt="" />
+          <img src="@/assets/icon_cut/img_rest_p@3x.png" alt="" />
           <span class="centerText">延迟申请</span>
         </div>
         <div class="leftImg" @click="toRandow('holidayApply')">
-          <img src="../../assets/icon_cut/img_yanchishenqin_p@3x.png" alt="" />
+          <img src="@/assets/icon_cut/img_yanchishenqin_p@3x.png" alt="" />
           <span class="leftText">请假</span>
         </div>
       </div>
@@ -28,7 +28,7 @@
       <p class="footerTitleStyle">
         <span class="footerTitleStyleL">文档</span>
         <span class="footerTitleStyler">
-          <img src="../../assets/icon_cut/icon_more@3x.png" alt="" />
+          <img src="@/assets/icon_cut/icon_more@3x.png" alt="" />
         </span>
       </p>
       <Footers :listData="listData"></Footers>
@@ -46,31 +46,31 @@ export default {
     return {
       listData: [
         {
-          image: require('../../assets/icon_cut/img01@3x.png'),
+          image: require('@/assets/icon_cut/img01@3x.png'),
           footerText: 'X16 需求文档',
           footerTime: '2021.4.17上传',
           rightText: '1.4MB',
         },
         {
-          image: require('../../assets/icon_cut/img02@3x.png'),
+          image: require('@/assets/icon_cut/img02@3x.png'),
           footerText: 'X15 需求文档',
           footerTime: '2021.4.16上传',
           rightText: '1.4MB',
         },
         {
-          image: require('../../assets/icon_cut/img03@3x.png'),
+          image: require('@/assets/icon_cut/img03@3x.png'),
           footerText: 'X14 需求文档',
           footerTime: '2021.4.15上传',
           rightText: '1.4MB',
         },
         {
-          image: require('../../assets/icon_cut/img03@3x.png'),
+          image: require('@/assets/icon_cut/img03@3x.png'),
           footerText: 'X14 需求文档',
           footerTime: '2021.4.15上传',
           rightText: '1.4MB',
         },
         {
-          image: require('../../assets/icon_cut/img03@3x.png'),
+          image: require('@/assets/icon_cut/img03@3x.png'),
           footerText: 'X14 需求文档',
           footerTime: '2021.4.15上传',
           rightText: '1.4MB',

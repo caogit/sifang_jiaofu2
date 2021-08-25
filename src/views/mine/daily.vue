@@ -3,8 +3,8 @@
     <Navber>
       <template #headerNav>日报</template>
       <template #rightIconNav>
-        <img src="../../assets/icon_cut/icon_delete@3x.png" alt="" @click="showChange" />
-        <img src="../../assets/icon_cut/icon_screen@3x.png" alt="" @click="showTanchu" />
+        <img src="@/assets/icon_cut/icon_delete@3x.png" alt="" @click="showChange" />
+        <img src="@/assets/icon_cut/icon_screen@3x.png" alt="" @click="showTanchu" />
       </template>
     </Navber>
     <div class="bigListStyle">
@@ -105,16 +105,16 @@ export default {
       showEndTime: false,
       // isPopup
       show: false,
-      minDate: new Date(2021, 7, 20),
+      minDate: new Date(2021, 6, 20),
       maxDate: new Date(2025, 10, 1),
-      listData: [],
+
       // 展示choose
       isChoose: false,
       // index
       ttemporaryIndex: '',
       imgObj: {
-        img1: require('../../assets/icon_cut/choice_jindu_no_shenpi@3x.png'),
-        img2: require('../../assets/icon_cut/choice_jindu_pick_shenpi@3x.png'),
+        img1: require('@/assets/icon_cut/choice_jindu_no_shenpi@3x.png'),
+        img2: require('@/assets/icon_cut/choice_jindu_pick_shenpi@3x.png'),
       },
       // 存放选中Obj
       chooseObj: {},
@@ -130,6 +130,10 @@ export default {
       });
       return str;
     },
+    listData() {
+      let obj = { ...this.$store.state.myDailyListData };
+      return obj;
+    },
   },
   components: {
     Tanchu,
@@ -143,21 +147,21 @@ export default {
 
   methods: {
     requestData() {
-      let parms = {
-        endDate: '',
-        pageNum: 1,
-        pageSize: 10,
-        startDate: '',
-      };
-      this.request.post(ApiUrl.MINE.GETLIST_BYPAGE, parms).then(res => {
-        if (res.code == 200) {
-          this.listData = res.data.records;
-          // 循环往里面加每个值
-          for (let i = 0; i < this.listData.length; i++) {
-            this.$set(this.chooseObj, i, false);
-          }
-        }
-      });
+      // let parms = {
+      //   endDate: '',
+      //   pageNum: 1,
+      //   pageSize: 10,
+      //   startDate: '',
+      // };
+      // this.request.post(ApiUrl.MINE.GETLIST_BYPAGE, parms).then(res => {
+      //   if (res.code == 200) {
+      //     this.listData = res.data.records;
+      //     // 循环往里面加每个值
+      //     for (let i = 0; i < this.listData.length; i++) {
+      //       this.$set(this.chooseObj, i, false);
+      //     }
+      //   }
+      // });
     },
     checkedPick(item, index) {
       // this.chooseObj[index] = true;

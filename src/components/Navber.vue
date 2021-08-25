@@ -2,7 +2,7 @@
   <div class="navStyle">
     <div id="canTopFixed">
       <div class="touStyle" @click="toBack">
-        <img src="../assets//icon_cut/nav_raback@2x.png" alt="" />
+        <img src="@/assets//icon_cut/nav_raback@2x.png" alt="" />
       </div>
       <div class="headerNav">
         <slot name="headerNav"></slot>

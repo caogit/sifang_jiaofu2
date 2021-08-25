@@ -11,8 +11,8 @@
             <slot name="rightText"> </slot>
           </li>
           <li v-if="showRightImg">
-            <img src="../assets/icon_cut/arrows_more@3x.png" alt="" v-if="!isTopArrow" />
-            <img src="../assets/icon_cut/cao-tp@3x.png" alt="" v-else />
+            <img src="@/assets/icon_cut/arrows_more@3x.png" alt="" v-if="!isTopArrow" />
+            <img src="@/assets/icon_cut/cao-tp@3x.png" alt="" v-else />
           </li>
         </ul>
       </slot>

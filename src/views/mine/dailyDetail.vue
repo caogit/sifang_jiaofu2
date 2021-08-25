@@ -63,6 +63,16 @@ export default {
         }
       });
     },
+    // 修改日报
+    submitApply() {
+      this.$router.push({
+        path: '/mineamendDaily',
+        query: {
+          fillDate: this.$route.query.date,
+          sendList: this.listData,
+        },
+      });
+    },
   },
 };
 </script>

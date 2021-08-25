@@ -2,7 +2,7 @@
   <div class="loginStyle">
     <div class="topStyle">
       <div class="iconStyle">
-        <img src="../../assets/icon_cut/icon_mine@3x.png" alt="" class="iconStyle_img" />
+        <img src="@/assets/icon_cut/icon_mine@3x.png" alt="" class="iconStyle_img" />
       </div>
       <div class="titleStyle">四方精创</div>
       <div class="titleEngStyle">FORMS SYNTRON</div>
@@ -10,13 +10,13 @@
     <div class="containStyle">
       <div class="inputStyle">
         <label class="labelStyle"
-          ><img src="../../assets/icon_cut/icon_iphone@2x.png" alt="" />
+          ><img src="@/assets/icon_cut/icon_iphone@2x.png" alt="" />
           <input type="text" placeholder="请输入用户名" class="inputs_Style" v-model="userName"
         /></label>
       </div>
       <div class="inputStyle">
         <label class="labelStyle"
-          ><img src="../../assets/icon_cut/icon_lock@3x.png" alt="" />
+          ><img src="@/assets/icon_cut/icon_lock@3x.png" alt="" />
           <input
             :type="passWordType"
             placeholder="请输入密码"
@@ -27,8 +27,8 @@
           <img
             :src="
               !isShow
-                ? require('../../assets/icon_cut/icon_eye@3x.png')
-                : require('../../assets/icon_cut/icon_close_eye@3x.png')
+                ? require('@/assets/icon_cut/icon_eye@3x.png')
+                : require('@/assets/icon_cut/icon_close_eye@3x.png')
             "
             alt=""
           />

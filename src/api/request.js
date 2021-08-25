@@ -26,6 +26,8 @@ function request(url, params, options = { loading: true, mock: false, error: tru
     if (method == 'post') data = { data: params };
     // delete请求使用data字段
     if (method == 'delete') data = { data: params };
+    // delete请求使用data字段
+    if (method == 'put') data = { data: params };
     // 通过mock平台可对局部接口进行mock设置
     // if (options.mock) url = 'http://www.mock.com/mock/xxxx/api';
     instance({
@@ -37,7 +39,7 @@ function request(url, params, options = { loading: true, mock: false, error: tru
         // 此处作用很大，可以扩展很多功能。
         // 比如对接多个后台，数据结构不一致，可做接口适配器
         // 也可对返回日期/金额/数字等统一做集中处理
-        if (res) {
+        if (res.code == 200) {
           resolve(res);
         } else {
           // 通过配置可关闭错误提示
@@ -65,8 +67,13 @@ function post(url, params, options) {
 function deletes(url, params, options) {
   return request(url, params, options, 'delete');
 }
+// 封装DELETE请求
+function put(url, params, options) {
+  return request(url, params, options, 'put');
+}
 export default {
   get,
   post,
   deletes,
+  put,
 };

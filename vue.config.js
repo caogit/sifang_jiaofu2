@@ -1,4 +1,6 @@
 module.exports = {
+  publicPath: './',
+
   css: {
     loaderOptions: {
       postcss: {
@@ -52,7 +54,7 @@ module.exports = {
         .options({
           // Provide path to the file with resources
           // 要公用的scss的路径
-          resources: './src/sass/index.scss',
+          resources: './src/assets/sass/index.scss',
         })
         .end();
     });

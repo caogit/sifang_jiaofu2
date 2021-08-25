@@ -3,7 +3,7 @@
     <Navber>
       <template #headerNav>审批</template>
       <template #rightIconNav>
-        <img src="../../assets/icon_cut/icon_history@2x.png" alt="" @click="toHistory" />
+        <img src="@/assets/icon_cut/icon_history@2x.png" alt="" @click="toHistory" />
       </template>
     </Navber>
     <div class="coinmainStyle">

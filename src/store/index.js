@@ -12,6 +12,7 @@ const store = new Vuex.Store({
   state: {
     listData: [],
     LoginManData: [],
+    myDailyListData: [],
   },
   mutations: {
     // 请求审批数据
@@ -28,6 +29,24 @@ const store = new Vuex.Store({
       this._vm.request.post(ApiUrl.USER.GETLOGIN_USER_INFO).then(res => {
         if (res.code == 200) {
           state.LoginManData = res.data;
+        }
+      });
+    },
+    // 我的日报列表每次10条数据
+    myDailyList(state) {
+      let parms = {
+        endDate: '',
+        pageNum: 1,
+        pageSize: 10,
+        startDate: '',
+      };
+      this.request.post(ApiUrl.MINE.GETLIST_BYPAGE, parms).then(res => {
+        if (res.code == 200) {
+          state.myDailyListData = res.data.records;
+          // // 循环往里面加每个值
+          // for (let i = 0; i < this.listData.length; i++) {
+          //   this.$set(this.chooseObj, i, false);
+          // }
         }
       });
     },

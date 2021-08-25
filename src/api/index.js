@@ -15,8 +15,9 @@ export const ApiUrl = {
   },
   // 我的
   MINE: {
-    GETLIST_BYPAGE: '/workDaily/work-daily/getListByPage',
+    GETLIST_BYPAGE: '/workDaily/work-daily/getListByPage', //我的日报列表
     WORK_DAILT_DEL: '/workDaily/work-daily/del', // 删除日报
     WORK_DAILT_FIND_PARAM: '/workDaily/work-daily/findParam', // 日报详情
+    WORK_DAILT_UPD: '/workDaily/work-daily/upd', //修改日报
   },
 };

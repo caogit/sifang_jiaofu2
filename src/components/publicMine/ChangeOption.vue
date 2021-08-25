@@ -9,7 +9,7 @@
       </li>
     </ul>
     <p>
-      <img src="../../assets/icon_cut/arrows_more@3x.png" alt="" />
+      <img src="@/assets/icon_cut/arrows_more@3x.png" alt="" />
     </p>
   </div>
 </template>
