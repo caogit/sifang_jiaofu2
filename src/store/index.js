@@ -40,7 +40,7 @@ const store = new Vuex.Store({
         pageSize: 10,
         startDate: '',
       };
-      this.request.post(ApiUrl.MINE.GETLIST_BYPAGE, parms).then(res => {
+      this._vm.request.post(ApiUrl.MINE.GETLIST_BYPAGE, parms).then(res => {
         if (res.code == 200) {
           state.myDailyListData = res.data.records;
           // // 循环往里面加每个值

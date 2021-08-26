@@ -121,6 +121,7 @@ export default {
       startTime: '请选择',
       endTime: '请选择',
       showTime: 0,
+      listData: [],
     };
   },
   computed: {
@@ -129,10 +130,6 @@ export default {
         return !!item;
       });
       return str;
-    },
-    listData() {
-      let obj = { ...this.$store.state.myDailyListData };
-      return obj;
     },
   },
   components: {
@@ -147,21 +144,21 @@ export default {
 
   methods: {
     requestData() {
-      // let parms = {
-      //   endDate: '',
-      //   pageNum: 1,
-      //   pageSize: 10,
-      //   startDate: '',
-      // };
-      // this.request.post(ApiUrl.MINE.GETLIST_BYPAGE, parms).then(res => {
-      //   if (res.code == 200) {
-      //     this.listData = res.data.records;
-      //     // 循环往里面加每个值
-      //     for (let i = 0; i < this.listData.length; i++) {
-      //       this.$set(this.chooseObj, i, false);
-      //     }
-      //   }
-      // });
+      let parms = {
+        endDate: '',
+        pageNum: 1,
+        pageSize: 10,
+        startDate: '',
+      };
+      this.request.post(ApiUrl.MINE.GETLIST_BYPAGE, parms).then(res => {
+        if (res.code == 200) {
+          this.listData = res.data.records;
+          // 循环往里面加每个值
+          for (let i = 0; i < this.listData.length; i++) {
+            this.$set(this.chooseObj, i, false);
+          }
+        }
+      });
     },
     checkedPick(item, index) {
       // this.chooseObj[index] = true;
